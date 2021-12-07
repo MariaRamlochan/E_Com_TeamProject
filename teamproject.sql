@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2021 at 03:46 AM
+-- Generation Time: Dec 07, 2021 at 09:14 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -41,6 +41,13 @@ CREATE TABLE `address` (
   `country` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `address`
+--
+
+INSERT INTO `address` (`address_id`, `profile_id`, `street_num`, `street_name`, `postal_code`, `city`, `province`, `country`) VALUES
+(1, 1, 1122, 'adsfdfdg', 'sfsfs', 'sdsadad', 'adada', 'adadad');
+
 -- --------------------------------------------------------
 
 --
@@ -52,18 +59,6 @@ CREATE TABLE `favorite` (
   `favorite_id` int(11) NOT NULL,
   `item_id` int(11) NOT NULL,
   `profile_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `history`
---
-
-DROP TABLE IF EXISTS `history`;
-CREATE TABLE `history` (
-  `history_id` int(11) NOT NULL,
-  `item_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -81,7 +76,8 @@ CREATE TABLE `item` (
   `item_desc` text NOT NULL,
   `item_price` double NOT NULL,
   `posted_date` date NOT NULL DEFAULT current_timestamp(),
-  `visits` int(11) NOT NULL
+  `visits` int(11) NOT NULL,
+  `status` enum('available','unavailable') NOT NULL DEFAULT 'available'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -100,6 +96,13 @@ CREATE TABLE `profile` (
   `profile_pic` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `profile`
+--
+
+INSERT INTO `profile` (`profile_id`, `user_id`, `profile_name`, `email`, `phone_num`, `profile_pic`) VALUES
+(1, 1, 'Princess', 'mariaramlochan@hotmail.com', 2147483647, '/uploads/61afb208525e5.jpg');
+
 -- --------------------------------------------------------
 
 --
@@ -114,6 +117,13 @@ CREATE TABLE `user` (
   `secret_key` varchar(16) NOT NULL,
   `last_login_timestamp` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`user_id`, `username`, `password_hash`, `secret_key`, `last_login_timestamp`) VALUES
+(1, 'bunny', '$2y$10$RWvyAdk1X3Hzn08J6VIspe5uP8xgF4jcPLdszpS83YhjTGcy6nAs6', '', '2021-12-07 19:11:31');
 
 --
 -- Indexes for dumped tables
@@ -133,12 +143,6 @@ ALTER TABLE `favorite`
   ADD PRIMARY KEY (`favorite_id`),
   ADD KEY `item_favorite` (`item_id`),
   ADD KEY `profile_favorite` (`profile_id`);
-
---
--- Indexes for table `history`
---
-ALTER TABLE `history`
-  ADD PRIMARY KEY (`history_id`);
 
 --
 -- Indexes for table `item`
@@ -170,19 +174,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `address`
 --
 ALTER TABLE `address`
-  MODIFY `address_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `address_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `favorite`
 --
 ALTER TABLE `favorite`
   MODIFY `favorite_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `history`
---
-ALTER TABLE `history`
-  MODIFY `history_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `item`
@@ -194,13 +192,13 @@ ALTER TABLE `item`
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
