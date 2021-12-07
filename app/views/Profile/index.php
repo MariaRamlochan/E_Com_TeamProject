@@ -29,13 +29,13 @@
         <hr class="admin-hr">
         <a style="color: #2fadfc;" href="/Profile/index">Search</a>
         <hr class="admin-hr">
-        <a href="/Item/add">Sell</a>
+        <a href="/Item/index">Sell</a>
         <hr class="admin-hr">
-        <a href="/Item/index">Favorites</a>
+        <a href="/Favorite/index">Favorites</a>
         <hr class="admin-hr">
         <a href="/Message/index">Messages</a>
         <hr class="admin-hr">
-        <a href="/History/index">Past Post</a>
+        <a href="/Item/discard">Past Post</a>
         <hr class="admin-hr">
     </div>
     </center>

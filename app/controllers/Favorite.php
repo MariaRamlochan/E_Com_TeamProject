@@ -1,17 +1,17 @@
 <?php
 namespace app\controllers;
 
-class Item extends \app\core\Controller{
+class Favorite extends \app\core\Controller{
 
 	public $folder='uploads/';
 
 	public function index(){
 		$item = new \app\models\Item();
-		$result = $item->get($_SESSION['profile_id']);
+		$items = $item->get($_SESSION['profile_id']);
         $profile = new \app\models\Profile();
         $user = $profile->get($_SESSION['user_id']);
 
-		$this->view('Item/index',['item'=>$result, 'user'=>$user]);
+		$this->view('Favorite/index',['item'=>$items, 'user'=>$user]);
 	}
 
 	public function insert(){
@@ -57,7 +57,7 @@ class Item extends \app\core\Controller{
                 } 
             }
         } else {
-            $this->view('Item/index');
+            $this->view('Item/add');
         }
     }
 
@@ -117,12 +117,10 @@ class Item extends \app\core\Controller{
             $this->view('Item/edit', ['item'=>$item]);
     }
 
-	public function discard($item_id) {
+	public function delete($item_id) {
         $item = new \app\models\Item();
-        $item = $item->get($item_id);
-        $item->status = 'unavailable';
-        $item->update();
-        header('Location:/Item/index');
+        $item->delete($item_id);
+        header('location:/Item/index');
     }
 
 

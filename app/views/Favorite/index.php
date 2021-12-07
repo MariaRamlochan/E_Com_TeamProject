@@ -9,7 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     
-    <title>Your Items for Sale</title>
+    <title>Favorites</title>
 </head>
 
 <body id='container'>
@@ -29,13 +29,13 @@
         <hr class="admin-hr">
         <a href="/Profile/index">Search</a>
         <hr class="admin-hr">
-        <a style="color: #2fadfc;" href="/Item/add">Sell</a>
+        <a href="/Item/add">Sell</a>
         <hr class="admin-hr">
-        <a href="/Favorite/index">Favorites</a>
+        <a style="color: #2fadfc;" href="/Favorite/index">Favorites</a>
         <hr class="admin-hr">
         <a href="/Message/index">Messages</a>
         <hr class="admin-hr">
-        <a href="/History/index">Past Post</a>
+        <a href="/Item/past">Past Post</a>
         <hr class="admin-hr">
     </div>
     </center>
@@ -71,7 +71,7 @@
             <div class="row">
                 <form action="/Item/search" method="POST">
                     <div class="col-12 d-flex flex-row" style="margin-top: 2%;">
-                        <h1 style="color:white; width: 80%; font-size: 400%">Your Items for Sale</h1>
+                        <h1 style="color:white; width: 80%; font-size: 400%">Favorites</h1>
                         <input type="search" class="form-control rounded" placeholder="Search" style="" />
                         <span class="input-group-text border-0" id="search-addon">
                             <i><img src="/images/search-icon.png"></i>
