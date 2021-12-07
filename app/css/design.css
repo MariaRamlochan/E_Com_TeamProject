@@ -1,0 +1,107 @@
+#container {
+    width: 100%;
+    height: 83%;
+}
+
+.sidenav {
+    height: 100%;
+    width: 15%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #333434;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+  
+.sidenav a {
+    text-decoration: none;
+    font-size: 175%;
+    color: white;
+    display: block;
+}
+  
+.sidenav a:hover {
+    /* color: #f1f1f1; */
+    /* color: violet; */
+    color: #2fadfc;
+}
+
+.sidenav .logouthover:hover {
+    color: red;
+}
+  
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+.admin-navbar-items {
+    margin-top: 20%;
+}
+
+.admin-hr {
+    color: white;
+    width: 340px;
+}
+
+.blue-box {
+    margin-left: 15%;
+    width: 85%;
+    height: 100%;
+    background-image: linear-gradient(to top, rgba(25,25,112,0), rgba(25,25,112,1));
+}
+
+.profile-pic {
+    border-radius: 50%;
+    background-color: white;
+}
+
+.box {
+    width:40%;
+    height: 50%;
+    position: center;
+}
+
+/*.container {
+    position: center;
+    border-radius: 20px;
+}*/
+
+.topBar {
+    /*background-color: #afb9d0;*/
+    background-image: linear-gradient(to left, rgba(51, 52, 52,0), rgba(51, 52, 52,1));
+    color: #666666;
+    margin-left: 15%;
+    width: 85%;
+    display: inline-block;
+}
+
+.topBar a {
+    color: #666666;
+    vertical-align: middle;
+}
+
+#left-side {
+    margin-top: 1%;
+    display: inline;
+    float: left;
+    text-align: left;
+}
+
+#right-side {
+    display: inline;
+    float: right;
+    text-align: right;
+}
+
+#right-side a {
+    vertical-align: middle;
+}
+
+#profilepic {
+    height:50px; 
+    width: auto; 
+    border-radius:50px;
+}
