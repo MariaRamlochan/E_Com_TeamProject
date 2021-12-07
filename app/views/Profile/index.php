@@ -31,7 +31,7 @@
         <hr class="admin-hr">
         <a href="/Item/add">Sell</a>
         <hr class="admin-hr">
-        <a href="/Favorite/index">Favorites</a>
+        <a href="/Item/index">Favorites</a>
         <hr class="admin-hr">
         <a href="/Message/index">Messages</a>
         <hr class="admin-hr">
@@ -67,39 +67,106 @@
     <div class="blue-box">
 
         <!-- Title and Search Bar -->
-        <div class="container"> 
-            <div class="row">
-                <form action="/Item/search" method="POST">
-                    <div class="col-12 d-flex flex-row" style="margin-top: 2%;">
-                        <h1 style="color:white; width: 80%; font-size: 400%">Items for Sale</h1>
-                        <input type="search" class="form-control rounded" placeholder="Search" style="" />
-                        <span class="input-group-text border-0" id="search-addon">
-                            <i><img src="/images/search-icon.png"></i>
-                        </span>
-                    </div>
-                </form>
-            </div>
+        <div class="container" style="margin-left: 1%"> 
+            <form action="/Item/search" method="POST">
+                    <div style='display:inline-block;'><h1 style="display:inline;color:white; width: 50%; font-size: 400%">Items for Sale</h1></div>
+                    <div style='display:inline-block;'><input type="search" class="form-control rounded" placeholder="Search" style="width: 150%; margin-left: 200%" /></div>
+            </form>
         </div>
 
 
         <!-- Item View -->
-        <div class="container" style="margin-top: 5%;">
-            <div class="row overflow-auto" style="width: 90%; height: 50%; margin-left: 5%">
-                <div> 
-                    <table class="table table-light table-hover" style="table-layout: fixed;">
-                        <tr class="table-secondary">
-                            <th style="width: 20%"></th>
-                            <th style="width: 13%"></th>
-                            <th style="width: 30%"></th>
-                            <th style="width:  9%"></th>
-                            <th style="width:  9%"></th>
-                            <th style="width:  9%"></th>
-                        </tr>
-   
-                    </table>
-                </div>
-            </div>
+        <div style='display:inline-block; height: 55%'>
+        <div class="container" style="height: 40%; margin-left: 1%">
+            <section class="p-3" style="width: 85%;">
+    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+        <table class="table table-bordered table-striped table-dark"> 
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">#</th>
+              <th scope="col">Item</th>
+              <th scope="col">Type</th>
+              <th scope="col">Theme</th>
+              <th scope="col">Production Cost</th>
+              <th scope="col">Sale Cost</th>
+              <th scope="col">Sale Quantity</th>
+              <th scope="col">Listed Quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <center>
+                    <!-- Modal for remove button trigger -->
+                    <button type="button" class="btn btn-danger btn-rounded btn-sm my-0" 
+                    data-toggle="modal" data-target="#removeItemRow">
+                    Remove
+                    </button>
+                    <!-- Modal for remove button trigger -->
+
+                    <!-- Modal for the edit button trigger -->
+                    <button type="button" class="btn btn-primary btn-rounded btn-sm my-0" 
+                            style="width: 40%" data-toggle="modal" data-target="#editItemRow">Edit
+                    </button>
+                    <!-- Modal for the endit button trigger -->
+                </center>
+              </td>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+              <td>Testing</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
         </div>
+    </div>
+
+        <!-- Filter -->
+        <div style='display:inline-block; margin-left: 5%'>
+            <div class="container" style="width: 150%">
+    <fieldset class="p-3" style="width: 13%; margin-right: 0.2%">
+            <!-- modal button trigger -->
+            <button type="button" class="btn btn-success btn-rounded" data-toggle="modal" 
+                    data-target="#modalCenter">Add new item</button>
+            <!-- modal button trigger -->
+            <br>
+            <label for="orderRadio" style="color:white; font-weight: bold; font-size: 150%">Order By</label><hr>
+            <input type="radio" id="orderRadio" value="Item Name"> 
+            <p style="display: inline; color: white">Item name</p><br><br>
+            <label style="color:white; font-weight: bold; font-size: 150%">Sort By</label><hr>
+
+            <label for="itemType" style="color: white">Item Type:</label></br>
+                <select name="itemType" id="itemType">
+                    <option value="none">None</option>
+                    <option value="pencilCase">Pencil case</option>
+                    <option value="sticker">Sticker</option>
+                    <option value="planner">Planner</option>
+                    <option value="calendar">Calendar</option>
+                    <option value="bookmark">Book Mark</option>
+                    <option value="cards">Cards</option>
+                </select></br>
+
+            <label for="itemTheme" style="color: white">Item Theme:</label></br>
+                <select name="itemTheme" id="itemTheme">
+                    <option value="None">None</option>
+                    <option value="winter">Winter</option>
+                    <option value="spring">Spring</option>
+                    <option value="summer">Summer</option>
+                    <option value="fall">Fall</option>
+                    <option value="xmas">Christmas</option>
+                    <option value="halloween">Halloween</option>
+                </select>
+    </fieldset>
+    </div>
+    </div>
+    <!-- filter -->
         
     </div>
 <!-- Content Here -->

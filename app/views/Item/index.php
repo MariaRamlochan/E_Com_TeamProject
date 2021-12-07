@@ -31,7 +31,7 @@
         <hr class="admin-hr">
         <a style="color: #2fadfc;" href="/Item/add">Sell</a>
         <hr class="admin-hr">
-        <a href="/Favorite/index">Favorites</a>
+        <a href="/Item/index">Favorites</a>
         <hr class="admin-hr">
         <a href="/Message/index">Messages</a>
         <hr class="admin-hr">

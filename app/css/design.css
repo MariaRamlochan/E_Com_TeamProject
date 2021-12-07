@@ -64,10 +64,11 @@
     position: center;
 }
 
-/*.container {
+.container {
     position: center;
     border-radius: 20px;
-}*/
+    background-color: black; 
+}
 
 .topBar {
     /*background-color: #afb9d0;*/
