@@ -12,7 +12,7 @@
 
         <div class="admin-navbar-items">
             <hr class="admin-hr">
-            <a style="color: #2fadfc;" href="/Profile/index">Home</a>
+            <a style="color: #2fadfc;" href="/Profile/index">Search</a>
             <hr class="admin-hr">
             <a href="/Item/add">Sell Item</a>
             <hr class="admin-hr">

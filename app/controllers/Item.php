@@ -14,6 +14,16 @@ class Item extends \app\core\Controller{
 		$this->view('Item/index',['item'=>$result, 'user'=>$user]);
 	}
 
+    public function search(){
+        $item = new \app\models\Item();
+        $result = $item->getAll();
+
+        $profile = new \app\models\Profile();
+        $user = $profile->get($_SESSION['user_id']);
+
+        $this->view('Item/search', $result);
+    }
+
 	public function insert(){
 		$profile_id = $_SESSION['profile_id'];
 
@@ -46,6 +56,7 @@ class Item extends \app\core\Controller{
 					$item->item_desc = $_POST['item_desc'];
 					$item->item_price = $_POST['item_price'];
 					$item->item_pic = "/".$this->folder.$filename;
+                    $item->visits = 0;
 					$profile->insert();
 
                     $item_id = $item->get($profile_id);

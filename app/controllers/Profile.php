@@ -6,10 +6,10 @@ class Profile extends \app\core\Controller{
 	public $folder='uploads/';
 
 	public function index(){
-		$profile = new \app\models\Profile();
-		$result = $profile->get($_SESSION['user_id']);
+		$item = new \app\models\Item();
+        $result = $item->getAll();
 
-		$this->view('Profile/index',['user'=>$result]);
+		$this->view('Profile/index', $result);
 	}
 
 	public function insert(){

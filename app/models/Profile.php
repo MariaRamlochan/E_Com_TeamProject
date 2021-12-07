@@ -53,6 +53,14 @@ class Profile extends \app\core\Model{
         return $STMT->fetchAll();
     }
 
+    public function getAllItem(){
+        $SQL = 'SELECT item_name, item_desc, item_price, item_pic FROM item';
+        $STMT = self::$_connection->prepare($SQL);
+        $STMT->execute();
+        $STMT->setFetchMode(\PDO::FETCH_CLASS,'app\\models\\Profile');
+        return $STMT->fetchAll();
+    }
+
 	public function insert(){
 		$SQL = 'INSERT INTO profile(user_id, profile_name, email, phone_num, profile_pic) 
 		VALUES (:user_id, :profile_name, :email, :phone_num, :profile_pic)';

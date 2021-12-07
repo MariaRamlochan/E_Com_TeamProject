@@ -22,7 +22,7 @@
     <center>
 
     <h2 class="nav-title" style="color:white; margin-top: 30px">
-        Welcome <?=$data['user']->profile_name ?>!
+        Welcome <?=$_SESSION['profile_name'] ?>!
     </h2>
 
     <div class="admin-navbar-items">
@@ -83,42 +83,27 @@
                     <table class="table table-bordered table-striped table-dark"> 
                         <thead>
                             <tr>
-                              <th scope="col"></th>
-                              <th scope="col">#</th>
-                              <th scope="col">Item</th>
-                              <th scope="col">Type</th>
-                              <th scope="col">Theme</th>
-                              <th scope="col">Production Cost</th>
-                              <th scope="col">Sale Cost</th>
-                              <th scope="col">Sale Quantity</th>
-                              <th scope="col">Listed Quantity</th>
+                              <th scope="col">Image</th>
+                              <th scope="col">Name</th>
+                              <th scope="col">Description</th>
+                              <th scope="col">Price</th>
+                              <th scope="col">Post Date</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                              <td>
-                                <center>
-                                    <!-- Modal for remove button trigger -->
-                                    <button type="button" class="btn btn-danger btn-rounded btn-sm my-0" 
-                                    data-toggle="modal" data-target="#removeItemRow">Remove</button>
-                                    <!-- Modal for remove button trigger -->
-
-                                    <!-- Modal for the edit button trigger -->
-                                    <button type="button" class="btn btn-primary btn-rounded btn-sm my-0" 
-                                            style="width: 40%" data-toggle="modal" data-target="#editItemRow">Edit
-                                    </button>
-                                    <!-- Modal for the endit button trigger -->
-                                </center>
-                              </td>
-                              <th scope="row">1</th>
-                              <td>Mark</td>
-                              <td>Otto</td>
-                              <td>@mdo</td>
-                              <td>Mark</td>
-                              <td>Otto</td>
-                              <td>@mdo</td>
-                              <td>Testing</td>
-                            </tr>
+                            <?php 
+                            foreach($data as $result) {
+                            echo " <tr> 
+                                        <td >
+                                            <img src='$result->item_pic' style='width:150px; height: 120px;'>
+                                        </td>
+                                        <td >$result->item_name</td>
+                                        <td style='word-wrap:break-word'>$result->item_desc</td>
+                                        <td >$result->item_price</td>
+                                        <td >$result->posted_date</td>
+                                    </tr>";
+                                }
+                            ?>
                         </tbody>
                     </table>
                  </div>

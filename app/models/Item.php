@@ -33,11 +33,11 @@ class Item extends \app\core\Model{
     }
 
 	public function insert(){
-		$SQL = 'INSERT INTO item(profile_id, item_name, item_pic, item_desc, item_price, posted_date, visits, status) 
-		VALUES (:user_id, :item_name, :item_pic, :item_desc, :item_price, :posted_date, :visits, status)';
+		$SQL = 'INSERT INTO item(profile_id, item_name, item_pic, item_desc, item_price, visits) 
+		VALUES (:user_id, :item_name, :item_pic, :item_desc, :item_price, :visits)';
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute(['user_id'=>$this->user_id,'item_name'=>$this->item_name, 'item_pic'=>$this->item_pic,
-			'item_desc'=>$this->item_desc, 'item_price'=>$this->item_price, 'posted_date'=>$this->posted_date, 'visits'=>$this->visits, 'status'=>$this->status]);
+			'item_desc'=>$this->item_desc, 'item_price'=>$this->item_price, 'visits'=>$this->visits]);
 	}
 
 	public function update(){
