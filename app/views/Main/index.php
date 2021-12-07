@@ -10,7 +10,7 @@
 <body style="background-image: linear-gradient(to top, rgba(25,25,112,0), rgba(25,25,112,1));">
 <center>
 <div class="box">
-    <div class="container p-5" style="width: 90%; height: 100%; margin-top: 25%">
+    <div class="container p-5 insideColor" style="width: 90%; height: 100%; margin-top: 25%">
         <h1 style="font-weight: bold; font-size: 350%">~Kijiji Knockoff~</h1><hr>
         <a class="btn btn-dark btn-lg" href="/Main/login" style="width: 60%; margin-top: 15%;  border-radius: 15px">Login</a><br><br><br>
         <a class="btn btn-dark btn-lg" href="/Main/register" style="width: 60%; border-radius: 15px">Create a new account</a>
