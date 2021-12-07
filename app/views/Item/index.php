@@ -22,7 +22,7 @@
     <center>
 
     <h2 class="nav-title" style="color:white; margin-top: 30px">
-        Welcome <?=$data['user']->profile_name ?>!
+        Welcome <?=$_SESSION['profile_name'] ?>!
     </h2>
 
     <div class="admin-navbar-items">
@@ -66,40 +66,104 @@
 <!-- Content Here -->
     <div class="blue-box">
 
-        <!-- Title and Search Bar -->
-        <div class="container"> 
-            <div class="row">
-                <form action="/Item/search" method="POST">
-                    <div class="col-12 d-flex flex-row" style="margin-top: 2%;">
-                        <h1 style="color:white; width: 80%; font-size: 400%">Your Items for Sale</h1>
-                        <input type="search" class="form-control rounded" placeholder="Search" style="" />
-                        <span class="input-group-text border-0" id="search-addon">
-                            <i><img src="/images/search-icon.png"></i>
-                        </span>
-                    </div>
-                </form>
-            </div>
-        </div>
+     <!-- Title and Search Bar -->
+     <div class="container" style="margin-left: 7%;"> 
+         <form action="/Item/search" method="POST">
+                 <div style='display:inline-block; margin-top: 4%'><h1 style="display:inline;color:white; width: 50%; font-size: 400%">Items for Sale</h1>
+                 </div>
+                 <div style='display:inline-block; margin-left: 35%'><input type="search" class="form-control rounded" placeholder="Search" style="width: 150%; margin-left: 145%"/>
+                 </div>
+         </form>
+     </div>
 
 
-        <!-- Item View -->
-        <div class="container" style="margin-top: 5%;">
-            <div class="row overflow-auto" style="width: 90%; height: 50%; margin-left: 5%">
-                <div> 
-                    <table class="table table-light table-hover" style="table-layout: fixed;">
-                        <tr class="table-secondary">
-                            <th style="width: 20%"></th>
-                            <th style="width: 13%"></th>
-                            <th style="width: 30%"></th>
-                            <th style="width:  9%"></th>
-                            <th style="width:  9%"></th>
-                            <th style="width:  9%"></th>
-                        </tr>
-   
+    <!-- Item View -->
+    <div style='display:inline-block; height: 55%'>
+        <div class="container insideColor" style="height: 40%; margin-left: 20%; margin-top: 5%; width: 400%; height: 145%">
+            <section class="p-3" style="width: 85%;">
+
+                <!-- modal button trigger -->
+                <button type="button" class="btn btn-success btn-rounded" data-toggle="modal" 
+                        data-target="#modalCenter" style="margin-left: 97%; width: 20%; height: 7%; margin-top: 1.5%">Add new item</button>
+                <!-- modal button trigger -->
+
+                <div class="table-wrapper-scroll-y my-custom-scrollbar" style="width: 117%;margin-top: 0.5%">
+                    <table class="table table-bordered table-striped table-dark"> 
+                        <thead>
+                            <tr>
+                              <th scope="col">Item</th>
+                              <th scope="col">Type</th>
+                              <th scope="col">Theme</th>
+                              <th scope="col">Production Cost</th>
+                              <th scope="col">Sale Cost</th>
+                              <th scope="col">Sale Quantity</th>
+                              <th scope="col">Listed Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                              <td>
+                              </td>
+                              <th scope="row">1</th>
+                              <td>@mdo</td>
+                              <td>Mark</td>
+                              <td>Otto</td>
+                              <td>@mdo</td>
+                              <td>Testing</td>
+                            </tr>
+                        </tbody>
                     </table>
-                </div>
-            </div>
+                 </div>
+            </section>
         </div>
+    </div>
+
+    <!-- Modal Popup(Add New Item)-->
+
+<div class="modal fade" id="modalCenter" tabindex="-1" role="dialog" 
+     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLongTitle" style="margin-left: 40%">Add Item</h3>
+        <button type="button" class="close" data-dismiss="modal" 
+                aria-label="Close" style="padding-left: 30%">
+          <span aria-hidden="true" style="color:white">&times;</span>
+        </button>
+      </div>
+
+      <form action="/ItemController/add" method="post">
+      <div class="modal-body">
+        <center>
+            <h4 style="margin-right: 27%">Item name</h4>
+                <input type="text" name="itemName" class="inputModal">
+            <h4 style="margin-right: 38%">Type</h4>
+                <input type="text" name="type" class="inputModal">
+            <h4 style="margin-right: 35%">Theme</h4>
+                <input type="text" name="theme" class="inputModal">
+            <h4 style="margin-right: 18%">Production Cost</h4>
+                <input type="text" name="productionCost" class="inputModal">
+            <h4 style="margin-right: 30%">Sale Cost</h4>
+                <input type="text" name="saleCost" class="inputModal">
+            <h4 style="margin-right: 23%">Sale Quantity</h4>
+                <input type="text" name="saleQty" class="inputModal">
+            <h4 style="margin-right: 20%">Listed Quantity</h4>
+                <input type="text" name="listedQty" class="inputModal">
+        </center>
+      </div>
+      <div class="modal-footer">
+        <center>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <input type="submit" name="action" class="btn btn-primary" value="Save"/>
+        </center>
+      </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<!-- Modal Popup(Add new Item) -->
         
     </div>
 <!-- Content Here -->
