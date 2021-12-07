@@ -67,7 +67,6 @@
 .container {
     position: center;
     border-radius: 20px;
-    background-color: black; 
 }
 
 .topBar {
@@ -105,4 +104,32 @@
     height:50px; 
     width: auto; 
     border-radius:50px;
+}
+
+.inputModal {
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 15px;
+    width: 50%;
+    font-size: 150%;
+}
+
+.modal-body, h4 {
+    color: white;
+}
+
+.modal-header, .modal-footer, .modal-body {
+    background-color: rgb(45, 46, 46);
+}
+
+/*.modal-body, h4 {
+    color: white;
+}*/
+
+.modal-title {
+    color: white;
+}
+
+.insideColor {
+    background-color: #DCDCDC;
 }
