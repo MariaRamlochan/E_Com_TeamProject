@@ -75,72 +75,70 @@
         </div>
 
 
-        <!-- Item View -->
-        <div style='display:inline-block; height: 55%'>
+    <!-- Item View -->
+    <div style='display:inline-block; height: 55%'>
         <div class="container" style="height: 40%; margin-left: 1%">
             <section class="p-3" style="width: 85%;">
-    <div class="table-wrapper-scroll-y my-custom-scrollbar">
-        <table class="table table-bordered table-striped table-dark"> 
-          <thead>
-            <tr>
-              <th scope="col"></th>
-              <th scope="col">#</th>
-              <th scope="col">Item</th>
-              <th scope="col">Type</th>
-              <th scope="col">Theme</th>
-              <th scope="col">Production Cost</th>
-              <th scope="col">Sale Cost</th>
-              <th scope="col">Sale Quantity</th>
-              <th scope="col">Listed Quantity</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <center>
-                    <!-- Modal for remove button trigger -->
-                    <button type="button" class="btn btn-danger btn-rounded btn-sm my-0" 
-                    data-toggle="modal" data-target="#removeItemRow">
-                    Remove
-                    </button>
-                    <!-- Modal for remove button trigger -->
+                <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                    <table class="table table-bordered table-striped table-dark"> 
+                        <thead>
+                            <tr>
+                              <th scope="col"></th>
+                              <th scope="col">#</th>
+                              <th scope="col">Item</th>
+                              <th scope="col">Type</th>
+                              <th scope="col">Theme</th>
+                              <th scope="col">Production Cost</th>
+                              <th scope="col">Sale Cost</th>
+                              <th scope="col">Sale Quantity</th>
+                              <th scope="col">Listed Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                              <td>
+                                <center>
+                                    <!-- Modal for remove button trigger -->
+                                    <button type="button" class="btn btn-danger btn-rounded btn-sm my-0" 
+                                    data-toggle="modal" data-target="#removeItemRow">Remove</button>
+                                    <!-- Modal for remove button trigger -->
 
-                    <!-- Modal for the edit button trigger -->
-                    <button type="button" class="btn btn-primary btn-rounded btn-sm my-0" 
-                            style="width: 40%" data-toggle="modal" data-target="#editItemRow">Edit
-                    </button>
-                    <!-- Modal for the endit button trigger -->
-                </center>
-              </td>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-              <td>Testing</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
+                                    <!-- Modal for the edit button trigger -->
+                                    <button type="button" class="btn btn-primary btn-rounded btn-sm my-0" 
+                                            style="width: 40%" data-toggle="modal" data-target="#editItemRow">Edit
+                                    </button>
+                                    <!-- Modal for the endit button trigger -->
+                                </center>
+                              </td>
+                              <th scope="row">1</th>
+                              <td>Mark</td>
+                              <td>Otto</td>
+                              <td>@mdo</td>
+                              <td>Mark</td>
+                              <td>Otto</td>
+                              <td>@mdo</td>
+                              <td>Testing</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                 </div>
+            </section>
         </div>
     </div>
 
         <!-- Filter -->
         <div style='display:inline-block; margin-left: 5%'>
             <div class="container" style="width: 150%">
-    <fieldset class="p-3" style="width: 13%; margin-right: 0.2%">
-            <!-- modal button trigger -->
-            <button type="button" class="btn btn-success btn-rounded" data-toggle="modal" 
-                    data-target="#modalCenter">Add new item</button>
-            <!-- modal button trigger -->
-            <br>
-            <label for="orderRadio" style="color:white; font-weight: bold; font-size: 150%">Order By</label><hr>
-            <input type="radio" id="orderRadio" value="Item Name"> 
-            <p style="display: inline; color: white">Item name</p><br><br>
-            <label style="color:white; font-weight: bold; font-size: 150%">Sort By</label><hr>
+                <fieldset class="p-3" style="width: 13%; margin-right: 0.2%">
+                <!-- modal button trigger -->
+                <button type="button" class="btn btn-success btn-rounded" data-toggle="modal" 
+                        data-target="#modalCenter">Add new item</button>
+                <!-- modal button trigger -->
+                <br>
+                <label for="orderRadio" style="color:white; font-weight: bold; font-size: 150%">Order By</label><hr>
+                <input type="radio" id="orderRadio" value="Item Name"> 
+                <p style="display: inline; color: white">Item name</p><br><br>
+                <label style="color:white; font-weight: bold; font-size: 150%">Sort By</label><hr>
 
             <label for="itemType" style="color: white">Item Type:</label></br>
                 <select name="itemType" id="itemType">

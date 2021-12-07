@@ -37,6 +37,10 @@ class Main extends \app\core\Controller{
 				$_SESSION['last_login_timestamp'] = $user->last_login_timestamp;
 				$_SESSION['failedattempts']=0;
 				$user->updateLoginTimestamp();
+
+				$profile = new \app\models\Profile();
+        		$profile = $profile->get($_SESSION['user_id']);
+        		$_SESSION['profile_id'] = $profile->profile_id;
 				if($user->secret_key != '')
 					$_SESSION['secret_key'] = $user->secret_key;
 				header('location:'.BASE.'Profile/index');
