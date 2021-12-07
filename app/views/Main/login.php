@@ -10,7 +10,7 @@
 <body style="background-image: linear-gradient(to top, rgba(25,25,112,0), rgba(25,25,112,1));">
 <center>
 <div class="box">
-    <div class="container p-5" style="width: 90%; height: 100%; margin-top: 25%">
+    <div class="container p-5 insideColor" style="width: 90%; height: 100%; margin-top: 25%">
         <h1 style="font-weight: bold; font-size: 350%">~Login~</h1><hr><br>
         <form action='' method='post'>
             <h5 style="margin-right: 43%">Username</h5>
