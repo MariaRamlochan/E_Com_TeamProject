@@ -17,15 +17,40 @@ class Item extends \app\core\Model{
 	}
 
 	public function get($profile_id){
-        $SQL = 'SELECT * FROM item WHERE profile_id = :profile_id';
+        $SQL = "SELECT * FROM item WHERE profile_id = :profile_id AND `status` = 'available'";
+        $STMT = self::$_connection->prepare($SQL);
+        $STMT->execute(['profile_id'=>$profile_id]);
+        $STMT->setFetchMode(\PDO::FETCH_CLASS,'app\\models\\Item');
+        return $STMT->fetch();
+    }
+
+    public function getSpecificItem($item_id){
+        $SQL = "SELECT * FROM item WHERE item_id = :item_id AND `status` = 'available'";
+        $STMT = self::$_connection->prepare($SQL);
+        $STMT->execute(['item_id'=>$item_id]);
+        $STMT->setFetchMode(\PDO::FETCH_CLASS,'app\\models\\Item');
+        return $STMT->fetch();
+    }
+
+    public function getAllItem($profile_id){
+        $SQL = "SELECT * FROM item WHERE profile_id = :profile_id AND `status` = 'available'";
         $STMT = self::$_connection->prepare($SQL);
         $STMT->execute(['profile_id'=>$profile_id]);
         $STMT->setFetchMode(\PDO::FETCH_CLASS,'app\\models\\Item');
         return $STMT->fetchAll();
     }
 
+
 	public function getAll(){
-        $SQL = 'SELECT * FROM item';
+        $SQL = "SELECT * FROM item WHERE `status` = 'available' ";
+        $STMT = self::$_connection->prepare($SQL);
+        $STMT->execute();
+        $STMT->setFetchMode(\PDO::FETCH_CLASS,'app\\models\\Item');
+        return $STMT->fetchAll();
+    }
+
+    public function getDiscard(){
+        $SQL = "SELECT * FROM item WHERE `status` = 'unavailable' ";
         $STMT = self::$_connection->prepare($SQL);
         $STMT->execute();
         $STMT->setFetchMode(\PDO::FETCH_CLASS,'app\\models\\Item');

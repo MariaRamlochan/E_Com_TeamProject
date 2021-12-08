@@ -35,7 +35,7 @@
         <hr class="admin-hr">
         <a href="/Message/index">Messages</a>
         <hr class="admin-hr">
-        <a href="/Item/discard">Past Post</a>
+        <a href="/Item/past">Past Post</a>
         <hr class="admin-hr">
     </div>
     </center>

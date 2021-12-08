@@ -7,7 +7,7 @@ class Item extends \app\core\Controller{
 
 	public function index(){
 		$item = new \app\models\Item();
-		$result = $item->get($_SESSION['profile_id']);
+		$result = $item->getAllItem($_SESSION['profile_id']);
 
 		$this->view('Item/index',['item'=>$result]);
 	}
@@ -61,7 +61,7 @@ class Item extends \app\core\Controller{
     }
 
 
-	public function edit(){
+	public function edit($item_id){
 
 		$item = new \app\models\Item;
 		$item = $item->get($_SESSION['profile_id']);
@@ -77,7 +77,7 @@ class Item extends \app\core\Controller{
                 if($check !== false && isset($mime_type_to_extension[$check['mime']])){
                     $extension = $mime_type_to_extension[$check['mime']];
                 }else{
-                    $this->view('Profile/index', ['error'=>"Bad file type",'pictures'=>[]]);
+                    $this->view('Item/index', ['error'=>"Bad file type",'pictures'=>[]]);
                     return;
                 }
                 
@@ -85,7 +85,7 @@ class Item extends \app\core\Controller{
                 $filepath = $this->folder.$filename;
 
                 if($_FILES['newPicture']['size'] > 4000000){
-                     $this->view('Profile/index', ['error'=>"File too large",'pictures'=>[]]);
+                     $this->view('Item/index', ['error'=>"File too large",'pictures'=>[]]);
                      return;
                 }
                 if(move_uploaded_file($_FILES['newPicture']['tmp_name'], $filepath)){
@@ -95,7 +95,7 @@ class Item extends \app\core\Controller{
                     $item->item_desc = $_POST['item_desc'];
                     $item->item_price = $_POST['item_price'];
                     $item->item_pic = "/".$this->folder.$filename;
-					$profile->edit();
+					$item->update();
 					//redirect the user back to the index
 					header("location:/Item/index");
                 } else{
@@ -107,21 +107,28 @@ class Item extends \app\core\Controller{
                     $item->item_desc = $_POST['item_desc'];
                     $item->item_price = $_POST['item_price'];
                     $item->item_pic = "/".$this->folder.$filename;
-                    $profile->edit();
+                    $item->update();
 
                     header("location:/Item/index");
             }
 
         }else //1 present a form to the user
-            $this->view('Item/edit', ['item'=>$item]);
+            $this->view('Item/edit', $item);
     }
 
 	public function discard($item_id) {
         $item = new \app\models\Item();
-        $item = $item->get($item_id);
+        $item = $item->getSpecificItem($item_id);
         $item->status = 'unavailable';
         $item->update();
         header('Location:/Item/index');
+    }
+
+    public function past(){
+        $item = new \app\models\Item();
+        $result = $item->getAllItem($_SESSION['profile_id']);
+
+        $this->view('Item/discard',['item'=>$result]);
     }
 
 

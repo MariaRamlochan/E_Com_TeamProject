@@ -9,7 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     
-    <title>Inbox</title>
+    <title>Edit your Post</title>
 </head>
 
 <body id='container'>
@@ -22,7 +22,7 @@
     <center>
 
     <h2 class="nav-title" style="color:white; margin-top: 30px">
-        Welcome <?=$data['user']->profile_name ?>!
+        Welcome <?=$_SESSION['profile_name'] ?>!
     </h2>
 
     <div class="admin-navbar-items">
@@ -33,9 +33,9 @@
         <hr class="admin-hr">
         <a href="/Favorite/index">Favorites</a>
         <hr class="admin-hr">
-        <a style="color: #2fadfc;" href="/Message/index">Messages</a>
+        <a href="/Message/index">Messages</a>
         <hr class="admin-hr">
-        <a href="/Item/past">Past Post</a>
+        <a style="color: #2fadfc;" href="/Item/past">Past Post</a>
         <hr class="admin-hr">
     </div>
     </center>
@@ -71,7 +71,7 @@
             <div class="row">
                 <form action="/Item/search" method="POST">
                     <div class="col-12 d-flex flex-row" style="margin-top: 2%;">
-                        <h1 style="color:white; width: 80%; font-size: 400%">Inbox</h1>
+                        <h1 style="color:white; width: 80%; font-size: 400%">Edit your Post</h1>
                         <input type="search" class="form-control rounded" placeholder="Search" style="" />
                         <span class="input-group-text border-0" id="search-addon">
                             <i><img src="/images/search-icon.png"></i>

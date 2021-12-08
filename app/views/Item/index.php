@@ -35,7 +35,7 @@
         <hr class="admin-hr">
         <a href="/Message/index">Messages</a>
         <hr class="admin-hr">
-        <a href="/History/index">Past Post</a>
+        <a href="/Item/past">Past Post</a>
         <hr class="admin-hr">
     </div>
     </center>
@@ -96,6 +96,7 @@
                               <th scope="col">Item Description</th>
                               <th scope="col">Item Price</th>
                               <th scope="col">Posted Date</th>
+                              <th scope="col">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -109,6 +110,11 @@
                                         <td style='word-wrap:break-word'>$result->item_desc</td>
                                         <td >$result->item_price</td>
                                         <td >$result->posted_date</td>
+                                        <td >
+                                            <a href='/Item/edit/$result->item_id' class='btn btn-primary' style='width:100%;''>Edit</a>
+
+                                            <a href='/Item/discard/$result->item_id' class='btn btn-danger' style='width:100%;''>Remove</a>
+                                        </td>
                                     </tr>";
                                 }
                             ?>
@@ -119,7 +125,7 @@
         </div>
     </div>
 
-    <!-- Modal Popup(Add New Item)-->
+<!-- Modal Popup(Add New Item)-->
 
 <div class="modal fade" id="modalCenter" tabindex="-1" role="dialog" 
      aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -159,6 +165,47 @@
 </div>
 
 <!-- Modal Popup(Add new Item) -->
+
+<!-- Modal Popup(Edit Item)-->
+
+<div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" 
+     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLongTitle" style="margin-left: 40%">Edit Item</h3>
+        <button type="button" class="close" data-dismiss="modal" 
+                aria-label="Close" style="padding-left: 30%">
+          <span aria-hidden="true" style="color:white">&times;</span>
+        </button>
+      </div>
+
+      <form action="/Item/edit($item->item_id)" method="post"  enctype="multipart/form-data">
+      <div class="modal-body">
+        <center>
+            <h4 style="margin-right: 27%">Edit Image</h4>
+                <img src='<?=$item->item_pic?>'>
+            <h4 style="margin-right: 38%">Item Name</h4>
+                <input type='text' name='item_name' class='inputModal' value='<?php echo $item['item_name']; ?>'>
+            <h4 style="margin-right: 35%">Item Description</h4>
+                <textarea type="text" name="item_desc" class="inputModal" style="width: 100%; height: 100%; resize:none;"><?php echo $data['item']->item_description; ?></textarea>
+            <h4 style="margin-right: 18%">Price</h4>
+                <input type="number" name="item_price" class="inputModal" min="0" step=".01">
+        </center>
+      </div>
+      <div class="modal-footer">
+        <center>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <input type="submit" name="action" class="btn btn-primary" value="Save"/>
+        </center>
+      </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<!-- Modal Popup(Edit Item) -->
         
 </div>
 <!-- Content Here -->
