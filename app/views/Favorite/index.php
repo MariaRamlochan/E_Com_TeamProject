@@ -89,7 +89,7 @@
                               <th scope="col">Price</th>
                               <th scope="col">Post Date</th>
                               <th scope="col">Sell Info</th>
-                              <th scope="col">Favorite</th>
+                              <th scope="col">Unfavorite</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -112,7 +112,7 @@
                                             $profile->phone_num
                                         </td>
                                         <td>
-                                            <a href='/Favorite/insert/$result->item_id' class='btn btn-danger' style='width:100%;''>Favorite</a>
+                                            <a href='/Favorite/insert/$result->item_id' class='btn btn-danger' style='width:100%;''>Unfavorite</a>
                                         </td>
                                     </tr>";
                                 }

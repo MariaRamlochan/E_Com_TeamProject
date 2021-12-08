@@ -12,6 +12,11 @@ class Profile extends \app\core\Controller{
 		$this->view('Profile/index', $result);
 	}
 
+    public function settings(){
+        
+        $this->view('Profile/settings');
+    }
+
 	public function insert(){
 		$user_id = $_SESSION['user_id'];
 
