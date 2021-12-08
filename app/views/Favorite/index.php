@@ -18,7 +18,7 @@
 <div class="sidenav">
     <center>
 
-    <img src="/images/bunny.gif" class='img-thumbnail img-fluid' alt="Responsive image" id='logo' alt="">
+    <img src="<?=$_SESSION['profile_pic'] ?>" class='img-thumbnail img-fluid' alt="Responsive image" id='logo' alt="">
     <center>
 
     <h2 class="nav-title" style="color:white; margin-top: 30px">
@@ -53,10 +53,8 @@
 <!-- Top Bar -->
     <div class="p-4 topBar">
         <ul id="right-side">
-            <a href="">username
-                <img src="https://i.imgur.com/HMF0ega.jpeg" id="profilepic">
-            <!-- <img src="<?php echo $user['profile_pic'];?>" id="profilepic"> -->
-            <!-- <?php echo $user['user_name'];?> -->
+            <a href="">About Us
+                <img src="/images/bunny.gif" id="profilepic">
             </a>
         </ul>
     </div>
@@ -67,41 +65,65 @@
     <div class="blue-box">
 
         <!-- Title and Search Bar -->
-        <div class="container"> 
-            <div class="row">
-                <form action="/Item/search" method="POST">
-                    <div class="col-12 d-flex flex-row" style="margin-top: 2%;">
-                        <h1 style="color:white; width: 80%; font-size: 400%">Favorites</h1>
-                        <input type="search" class="form-control rounded" placeholder="Search" style="" />
-                        <span class="input-group-text border-0" id="search-addon">
-                            <i><img src="/images/search-icon.png"></i>
-                        </span>
+        <div class="container" style="margin-left: 10%"> 
+            <form action="/Item/search" method="POST">
+                    <div style='display:inline-block; margin-top: 4%'><h1 style="display:inline;color:white; width: 50%; font-size: 400%">Favorite List</h1></div>
+                    <div style='display:inline-block; margin-left: 33%'><input type="search" class="form-control rounded" placeholder="Search" style="width: 150%; margin-left: 145%" />
                     </div>
-                </form>
-            </div>
+            </form>
         </div>
 
 
-        <!-- Item View -->
-        <div class="container" style="margin-top: 5%;">
-            <div class="row overflow-auto" style="width: 90%; height: 50%; margin-left: 5%">
-                <div> 
-                    <table class="table table-light table-hover" style="table-layout: fixed;">
-                        <tr class="table-secondary">
-                            <th style="width: 20%"></th>
-                            <th style="width: 13%"></th>
-                            <th style="width: 30%"></th>
-                            <th style="width:  9%"></th>
-                            <th style="width:  9%"></th>
-                            <th style="width:  9%"></th>
-                        </tr>
-   
+    <!-- Item View -->
+    <div style='display:inline-block; height: 55%'>
+        <div class="container insideColor" style="margin-left: 19%; 
+                margin-top: 5%; width: 400%; height: 145%">
+            <section class="p-3" style="width: 100%;margin-top: 1.5%">
+                <div class="table-wrapper-scroll-y my-custom-scrollbarSell">
+                    <table class="table table-bordered table-striped table-dark"> 
+                        <thead>
+                            <tr>
+                              <th scope="col">Image</th>
+                              <th scope="col">Name</th>
+                              <th scope="col">Description</th>
+                              <th scope="col">Price</th>
+                              <th scope="col">Post Date</th>
+                              <th scope="col">Sell Info</th>
+                              <th scope="col">Favorite</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php 
+                            foreach($data as $result) {
+
+                            $profile = new \app\models\Profile();
+                            $profile = $profile->getSpecificUser($result->profile_id);
+                            echo " <tr> 
+                                        <td >
+                                            <img src='$result->item_pic' style='width:150px; height: 120px;'>
+                                        </td>
+                                        <td >$result->item_name</td>
+                                        <td style='word-wrap:break-word'>$result->item_desc</td>
+                                        <td >$result->item_price$</td>
+                                        <td >$result->posted_date</td>
+                                        <td >
+                                            $profile->profile_name<br><br>
+                                            $profile->email<br>
+                                            $profile->phone_num
+                                        </td>
+                                        <td>
+                                            <a href='/Favorite/insert/$result->item_id' class='btn btn-danger' style='width:100%;''>Favorite</a>
+                                        </td>
+                                    </tr>";
+                                }
+                            ?>
+                        </tbody>
                     </table>
-                </div>
-            </div>
+                 </div>
+            </section>
         </div>
-        
-    </div>
+    </div> 
+</div>
 <!-- Content Here -->
 </body>
 </html>
