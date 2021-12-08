@@ -8,7 +8,7 @@ class Profile extends \app\core\Controller{
 	public function index(){
 		$item = new \app\models\Item();
         $result = $item->getAll();
-        
+
 		$this->view('Profile/index', $result);
 	}
 
