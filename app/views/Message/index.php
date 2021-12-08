@@ -18,11 +18,11 @@
 <div class="sidenav">
     <center>
 
-    <img src="/images/bunny.gif" class='img-thumbnail img-fluid' alt="Responsive image" id='logo' alt="">
+     <img src="<?=$_SESSION['profile_pic'] ?>" class='img-thumbnail img-fluid' alt="Responsive image" id='logo' alt="">
     <center>
 
     <h2 class="nav-title" style="color:white; margin-top: 30px">
-        Welcome <?=$data['user']->profile_name ?>!
+        Welcome <?=$_SESSION['profile_name'] ?>!
     </h2>
 
     <div class="admin-navbar-items">
@@ -41,7 +41,7 @@
     </center>
 
     <div class="text-center setting-logout-position-admin">
-        <a href="#">Settings</a>
+        <a href="/Profile/settings">Settings</a>
         <center>
             <br><br><br><br><br><hr>
         </center>

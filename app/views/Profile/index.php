@@ -43,7 +43,7 @@
     </center>
 
     <div class="text-center setting-logout-position-admin">
-        <a href="#">Settings</a>
+        <a href="/Profile/settings">Settings</a>
         <center>
             <br><br><br><br><br><hr>
         </center>

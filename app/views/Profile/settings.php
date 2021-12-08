@@ -18,11 +18,11 @@
 <div class="sidenav">
     <center>
 
-    <img src="/images/bunny.gif" class='img-thumbnail img-fluid' alt="Responsive image" id='logo' alt="">
+     <img src="<?=$_SESSION['profile_pic'] ?>" class='img-thumbnail img-fluid' alt="Responsive image" id='logo' alt="">
     <center>
 
     <h2 class="nav-title" style="color:white; margin-top: 30px">
-        Welcome <?=$data['user']->profile_name ?>!
+        Welcome <?=$_SESSION['profile_name'] ?>!
     </h2>
 
     <div class="admin-navbar-items">
@@ -33,7 +33,7 @@
         <hr class="admin-hr">
         <a href="/Favorite/index">Favorites</a>
         <hr class="admin-hr">
-        <a style="color: #2fadfc;" href="/Message/index">Messages</a>
+        <a href="/Message/index">Messages</a>
         <hr class="admin-hr">
         <a href="/Item/past">Past Post</a>
         <hr class="admin-hr">
@@ -41,7 +41,7 @@
     </center>
 
     <div class="text-center setting-logout-position-admin">
-        <a href="#">Settings</a>
+        <a style="color: #2fadfc;" href="/Profile/settings">Settings</a>
         <center>
             <br><br><br><br><br><hr>
         </center>
@@ -64,44 +64,40 @@
 
 
 <!-- Content Here -->
-    <div class="blue-box">
+ <div class="blue-box">
 
-        <!-- Title and Search Bar -->
-        <div class="container"> 
-            <div class="row">
-                <form action="/Item/search" method="POST">
-                    <div class="col-12 d-flex flex-row" style="margin-top: 2%;">
-                        <h1 style="color:white; width: 80%; font-size: 400%">Inbox</h1>
-                        <input type="search" class="form-control rounded" placeholder="Search" style="" />
-                        <span class="input-group-text border-0" id="search-addon">
-                            <i><img src="/images/search-icon.png"></i>
-                        </span>
-                    </div>
-                </form>
-            </div>
-        </div>
+    <!-- Title -->
+    <div class="container" style="margin-left: 10%"> 
+        <center>
+        <div style='display:inline-block; margin-top: 4%'><h1 style="display:inline;color:white; width: 50%; font-size: 400%">
+        Settings</h1></div>
+        </center>
+    </div>
 
+    <!-- Item View -->
+        <center>
+            <div class="container">
+                <div class="container p-5 insideColor" style="margin-right: 30%; width: 50%; height: 67%; margin-top: 5%">
 
-        <!-- Item View -->
-        <div class="container" style="margin-top: 5%;">
-            <div class="row overflow-auto" style="width: 90%; height: 50%; margin-left: 5%">
-                <div> 
-                    <table class="table table-light table-hover" style="table-layout: fixed;">
-                        <tr class="table-secondary">
-                            <th style="width: 20%"></th>
-                            <th style="width: 13%"></th>
-                            <th style="width: 30%"></th>
-                            <th style="width:  9%"></th>
-                            <th style="width:  9%"></th>
-                            <th style="width:  9%"></th>
-                        </tr>
-   
-                    </table>
+                    <br>
+                    <a class="btn btn-lg btn-danger" href="/Profile/edit" 
+                            style="width: 80%; border-radius: 15px; height: 12%">Edit Profile</a>
+                    <br><hr>
+                    <a class="btn btn-lg btn-danger" href="/Address/edit" 
+                            style="width: 80%; border-radius: 15px; height: 12%">Edit Address</a>
+                    <br><hr>
+                    <a class="btn btn-lg btn-danger" href="/Main/changePassword" 
+                            style="width: 80%; border-radius: 15px; height: 12%">Change Password</a>
+                    <br><hr>
+                    <a class="btn btn-lg btn-danger" href="/Main/twofasetup" 
+                            style="width: 80%; border-radius: 15px; height: 12%">Setup 2FA</a>
+                    <br><hr>
+                    <a class="btn btn-lg btn-danger" href="/Profile/delete" 
+                            style="width: 80%; border-radius: 15px; height: 12%">Delete Account</a>
+
                 </div>
             </div>
-        </div>
-        
-    </div>
+        </center></div>
 <!-- Content Here -->
 </body>
 </html>
