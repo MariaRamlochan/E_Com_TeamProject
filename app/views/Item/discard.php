@@ -18,7 +18,7 @@
 <div class="sidenav">
     <center>
 
-    <img src="/images/bunny.gif" class='img-thumbnail img-fluid' alt="Responsive image" id='logo' alt="">
+    <img src="<?=$_SESSION['profile_pic'] ?>" class='img-thumbnail img-fluid' alt="Responsive image" id='logo' alt="">
     <center>
 
     <h2 class="nav-title" style="color:white; margin-top: 30px">
@@ -53,10 +53,8 @@
 <!-- Top Bar -->
     <div class="p-4 topBar">
         <ul id="right-side">
-            <a href="">username
-                <img src="https://i.imgur.com/HMF0ega.jpeg" id="profilepic">
-            <!-- <img src="<?php echo $user['profile_pic'];?>" id="profilepic"> -->
-            <!-- <?php echo $user['user_name'];?> -->
+            <a href="">About Us
+                <img src="/images/bunny.gif" id="profilepic">
             </a>
         </ul>
     </div>
@@ -94,7 +92,6 @@
                               <th scope="col">Item Description</th>
                               <th scope="col">Item Price</th>
                               <th scope="col">Posted Date</th>
-                              <th scope="col">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -108,11 +105,6 @@
                                         <td style='word-wrap:break-word'>$result->item_desc</td>
                                         <td >$result->item_price</td>
                                         <td >$result->posted_date</td>
-                                        <td >
-                                            <a href='/Item/edit/$result->item_id' class='btn btn-primary' style='width:100%;''>Edit</a>
-
-                                            <a href='/Item/discard/$result->item_id' class='btn btn-danger' style='width:100%;''>Remove</a>
-                                        </td>
                                     </tr>";
                                 }
                             ?>

@@ -126,7 +126,7 @@ class Item extends \app\core\Controller{
 
     public function past(){
         $item = new \app\models\Item();
-        $result = $item->getAllItem($_SESSION['profile_id']);
+        $result = $item->getDiscard($_SESSION['profile_id']);
 
         $this->view('Item/discard',['item'=>$result]);
     }

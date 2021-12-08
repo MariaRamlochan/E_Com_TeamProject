@@ -49,10 +49,10 @@ class Item extends \app\core\Model{
         return $STMT->fetchAll();
     }
 
-    public function getDiscard(){
-        $SQL = "SELECT * FROM item WHERE `status` = 'unavailable' ";
+    public function getDiscard($profile_id){
+        $SQL = "SELECT * FROM item WHERE profile_id = :profile_id AND `status` = 'unavailable' ";
         $STMT = self::$_connection->prepare($SQL);
-        $STMT->execute();
+        $STMT->execute(['profile_id'=>$profile_id]);
         $STMT->setFetchMode(\PDO::FETCH_CLASS,'app\\models\\Item');
         return $STMT->fetchAll();
     }
