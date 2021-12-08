@@ -78,7 +78,7 @@
 
     <!-- Item View -->
     <div style='display:inline-block; height: 55%'>
-        <div class="container insideColor" style="margin-left: 28%; 
+        <div class="container insideColor" style="margin-left: 19%; 
                 margin-top: 5%; width: 400%; height: 145%">
             <section class="p-3" style="width: 100%;margin-top: 1.5%">
                 <div class="table-wrapper-scroll-y my-custom-scrollbarSell">
@@ -126,5 +126,6 @@
         </div>
     </div> 
 </div>
+<!-- Content Here -->
 </body>
 </html>
