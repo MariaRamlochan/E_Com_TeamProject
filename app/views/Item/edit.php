@@ -66,48 +66,42 @@
 <!-- Content Here -->
     <div class="blue-box">
 
-     <!-- Title and Search Bar -->
-     <div class="container" style="margin-left: 7%;"> 
-                 <div style='display:inline-block; margin-top: 4%; margin-left: 43%'>
-                    <h1 style="display:inline;color:white; width: 50%; font-size: 400%">Your Treasures</h1>
-                 </div>
-                 
-         </form>
-     </div>
-
-
-    <!-- Item View -->
-    <div style='display:inline-block; height: 55%'>
-        <div class="container insideColor" style="margin-left: 50%; margin-top: 5%; width: 500%; height: 145%">
-
-            <form action="/Item/insert" method="post"  enctype="multipart/form-data">
-                <div>
-                    <center>
-                        <h4 style="margin-right: 52%">Item Image</h4>
-                            <input class="editDesign btn btn-primary" type="file" name="newPicture" 
-                                style="width: 60%; border-radius: 20px">
-                        <h4 style="margin-right: 52%">Item Name</h4>
-                            <input class="editDesign" type="text" name="item_name" style="color: black; width: 60%">
-                        <h4 style="margin-right: 55%">Price</h4>
-                            <input class="editDesign" type="number" name="item_price" min="0" step=".01" style="color: black; width: 60%">
-                        <h4 style="margin-right: 78%">Item Description</h4>
-                            <textarea class="editDesign" type="text" name="item_desc" style="width: 90%; height: 45%; resize:none; color: black;"></textarea>
-                    </center>
-                </div>
-                <div>
-                    <center><hr>
-                    <input type="submit" name="action" class="btn btn-success btn-lg" value="Save" style="width: 50%" />
-                    </center>
-                </div>
-      </form>
-            
+        <!-- Title and Search Bar -->
+        <div class="container"> 
+            <div class="row">
+                <form action="/Item/search" method="POST">
+                    <div class="col-12 d-flex flex-row" style="margin-top: 2%;">
+                        <h1 style="color:white; width: 80%; font-size: 400%">Edit your Post</h1>
+                        <input type="search" class="form-control rounded" placeholder="Search" style="" />
+                        <span class="input-group-text border-0" id="search-addon">
+                            <i><img src="/images/search-icon.png"></i>
+                        </span>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
 
 
-
+        <!-- Item View -->
+        <div class="container" style="margin-top: 5%;">
+            <div class="row overflow-auto" style="width: 90%; height: 50%; margin-left: 5%">
+                <div> 
+                    <table class="table table-light table-hover" style="table-layout: fixed;">
+                        <tr class="table-secondary">
+                            <th style="width: 20%"></th>
+                            <th style="width: 13%"></th>
+                            <th style="width: 30%"></th>
+                            <th style="width:  9%"></th>
+                            <th style="width:  9%"></th>
+                            <th style="width:  9%"></th>
+                        </tr>
+   
+                    </table>
+                </div>
+            </div>
+        </div>
         
-</div>
+    </div>
 <!-- Content Here -->
 </body>
 </html>
