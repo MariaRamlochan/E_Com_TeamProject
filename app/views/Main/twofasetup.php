@@ -8,13 +8,7 @@
 </head>
 
 <body>
-<h2>Menu</h2>
-
-<ul>
-  <li><a href="/Profile/index/"style="text-decoration: none;" >My profile</a></li>
-  <li><a href="/Main/changePassword/"style="text-decoration: none;">Change password</a></li>
-  <li><a href="/Main/logout"style="text-decoration: none;">Logout</a></li>
-</ul>
+	
 <img src="/Main/makeQRCode?data=<?= $data ?>" />
 <br>
 Please scan the QR-code on the screen with your favorite

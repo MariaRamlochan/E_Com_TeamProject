@@ -53,10 +53,8 @@
 <!-- Top Bar -->
     <div class="p-4 topBar">
         <ul id="right-side">
-            <a href="">username
-                <img src="https://i.imgur.com/HMF0ega.jpeg" id="profilepic">
-            <!-- <img src="<?php echo $user['profile_pic'];?>" id="profilepic"> -->
-            <!-- <?php echo $user['user_name'];?> -->
+            <a href="">About Us
+                <img src="/images/bunny.gif" id="profilepic">
             </a>
         </ul>
     </div>
@@ -89,7 +87,7 @@
                     <a class="btn btn-lg btn-danger" href="/Main/changePassword" 
                             style="width: 80%; border-radius: 15px; height: 12%">Change Password</a>
                     <br><hr>
-                    <a class="btn btn-lg btn-danger" href="/Main/twofasetup" 
+                    <a class="btn btn-lg btn-danger" href="/Main/setup2fa" 
                             style="width: 80%; border-radius: 15px; height: 12%">Setup 2FA</a>
                     <br><hr>
                     <a class="btn btn-lg btn-danger" href="/Profile/delete" 
