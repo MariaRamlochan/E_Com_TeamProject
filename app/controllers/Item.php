@@ -46,9 +46,6 @@ class Item extends \app\core\Controller{
 					$item->item_pic = "/".$this->folder.$filename;
                     $item->visits = 0;
 					$item->insert();
-
-                    $item_id = $item->get($profile_id);
-                    $_SESSION['item_id'] = $item->$item_id;
 					//redirect the user back to the index
 					header("location:/Item/index");
                 } else{

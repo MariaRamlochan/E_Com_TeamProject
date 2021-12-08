@@ -90,19 +90,32 @@
                               <th scope="col">Description</th>
                               <th scope="col">Price</th>
                               <th scope="col">Post Date</th>
+                              <th scope="col">Sell Info</th>
+                              <th scope="col">Favorite</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php 
                             foreach($data as $result) {
+
+                            $profile = new \app\models\Profile();
+                            $profile = $profile->getSpecificUser($result->profile_id);
                             echo " <tr> 
                                         <td >
                                             <img src='$result->item_pic' style='width:150px; height: 120px;'>
                                         </td>
                                         <td >$result->item_name</td>
                                         <td style='word-wrap:break-word'>$result->item_desc</td>
-                                        <td >$result->item_price</td>
+                                        <td >$result->item_price$</td>
                                         <td >$result->posted_date</td>
+                                        <td >
+                                            $profile->profile_name<br><br>
+                                            $profile->email<br>
+                                            $profile->phone_num
+                                        </td>
+                                        <td>
+                                            <a href='/Favorite/insert/$result->item_id' class='btn btn-danger' style='width:100%;''>Favorite</a>
+                                        </td>
                                     </tr>";
                                 }
                             ?>
