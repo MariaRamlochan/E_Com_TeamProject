@@ -136,9 +136,16 @@
 
 .my-custom-scrollbar {
     position: relative;
-    height: 730px;
+    height: 84%;
     overflow: auto;
 }
+
+.my-custom-scrollbarSell {
+    position: relative;
+    height: 91%;
+    overflow: auto;
+}
+
 .table-wrapper-scroll-y {
     display: block;
 }

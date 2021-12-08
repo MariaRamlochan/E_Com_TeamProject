@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2021 at 09:14 PM
+-- Generation Time: Dec 08, 2021 at 03:29 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -80,6 +80,17 @@ CREATE TABLE `item` (
   `status` enum('available','unavailable') NOT NULL DEFAULT 'available'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `item`
+--
+
+INSERT INTO `item` (`item_id`, `profile_id`, `item_name`, `item_pic`, `item_desc`, `item_price`, `posted_date`, `visits`, `status`) VALUES
+(1, 1, 'Actual Crepes', '/uploads/61b0161036be9.jpg', 'yummy', 2.99, '2021-12-07', 0, 'available'),
+(2, 1, 'macaroons', '/uploads/61b016347e170.jpg', 'yay', 3.24, '2021-12-07', 0, 'available'),
+(3, 1, 'cake', '/uploads/61b0164713dc1.jpg', 'wert', 34, '2021-12-07', 0, 'available'),
+(4, 1, 'Jam scones', '/uploads/61b0165f8d879.png', 'wow', 3.2, '2021-12-07', 0, 'available'),
+(5, 1, 'banana crepes', '/uploads/61b0168483479.jpg', 'not a scam', 300, '2021-12-07', 0, 'available');
+
 -- --------------------------------------------------------
 
 --
@@ -123,7 +134,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `username`, `password_hash`, `secret_key`, `last_login_timestamp`) VALUES
-(1, 'bunny', '$2y$10$RWvyAdk1X3Hzn08J6VIspe5uP8xgF4jcPLdszpS83YhjTGcy6nAs6', '', '2021-12-07 19:11:31');
+(1, 'bunny', '$2y$10$RWvyAdk1X3Hzn08J6VIspe5uP8xgF4jcPLdszpS83YhjTGcy6nAs6', '', '2021-12-08 07:12:18');
 
 --
 -- Indexes for dumped tables
@@ -186,7 +197,7 @@ ALTER TABLE `favorite`
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `profile`
