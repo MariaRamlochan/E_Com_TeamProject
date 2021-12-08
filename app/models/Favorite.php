@@ -18,13 +18,14 @@ class Favorite extends \app\core\Model{
         return $STMT->fetch();
     }
 
-	public function getAll($profile_id, $item_id){
-        $SQL = 'SELECT * FROM item WHERE profile_id = :profile_id AND item_id = : item_id';
+	public function getAll($profile_id){
+        $SQL = 'SELECT * FROM favorite WHERE profile_id = :profile_id';
         $STMT = self::$_connection->prepare($SQL);
-        $STMT->execute(['profile_id'=>$profile_id, 'item_id'=>$item_id]);
+        $STMT->execute(['profile_id'=>$profile_id]);
         $STMT->setFetchMode(\PDO::FETCH_CLASS,'app\\models\\Favorite');
         return $STMT->fetchAll();
     }
+
 
 	public function insert(){
 		$SQL = 'INSERT INTO favorite(profile_id, item_id) 

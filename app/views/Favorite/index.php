@@ -22,7 +22,7 @@
     <center>
 
     <h2 class="nav-title" style="color:white; margin-top: 30px">
-        Welcome <?=$data['user']->profile_name ?>!
+        Welcome <?=$_SESSION['profile_name'] ?>!
     </h2>
 
     <div class="admin-navbar-items">
@@ -94,25 +94,28 @@
                         </thead>
                         <tbody>
                             <?php 
-                            foreach($data as $result) {
+                            foreach($data as $favorite) {
+
+                            $item = new \app\models\Item();
+                            $item = $item->getSpecificItem($favorite->item_id);
 
                             $profile = new \app\models\Profile();
-                            $profile = $profile->getSpecificUser($result->profile_id);
+                            $profile = $profile->getSpecificUser($item->profile_id);
                             echo " <tr> 
                                         <td >
-                                            <img src='$result->item_pic' style='width:150px; height: 120px;'>
+                                            <img src='$item->item_pic' style='width:150px; height: 120px;'>
                                         </td>
-                                        <td >$result->item_name</td>
-                                        <td style='word-wrap:break-word'>$result->item_desc</td>
-                                        <td >$result->item_price$</td>
-                                        <td >$result->posted_date</td>
+                                        <td >$item->item_name</td>
+                                        <td style='word-wrap:break-word'>$item->item_desc</td>
+                                        <td >$item->item_price$</td>
+                                        <td >$item->posted_date</td>
                                         <td >
                                             $profile->profile_name<br><br>
                                             $profile->email<br>
                                             $profile->phone_num
                                         </td>
                                         <td>
-                                            <a href='/Favorite/insert/$result->item_id' class='btn btn-danger' style='width:100%;''>Unfavorite</a>
+                                            <a href='/Favorite/delete/$favorite->favorite_id' class='btn btn-danger' style='width:100%;''>Unfavorite</a>
                                         </td>
                                     </tr>";
                                 }

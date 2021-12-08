@@ -6,12 +6,11 @@ class Favorite extends \app\core\Controller{
 	public $folder='uploads/';
 
 	public function index(){
-		$item = new \app\models\Item();
-		$items = $item->get($_SESSION['profile_id']);
-        $profile = new \app\models\Profile();
-        $user = $profile->get($_SESSION['user_id']);
+		$favorite = new \app\models\Favorite();
+		$favorite = $favorite->getAll($_SESSION['profile_id']);
 
-		$this->view('Favorite/index',['item'=>$items, 'user'=>$user]);
+
+		$this->view('Favorite/index', $favorite);
 	}
 
 	public function insert($item_id){
@@ -20,7 +19,7 @@ class Favorite extends \app\core\Controller{
         $favorite->item_id = $item_id;
         $favorite->insert();
 
-		header("location:/Item/index");
+		header("location:/Profile/index");
     }
 
 
@@ -79,10 +78,10 @@ class Favorite extends \app\core\Controller{
             $this->view('Item/edit', ['item'=>$item]);
     }
 
-	public function delete($item_id) {
-        $item = new \app\models\Item();
-        $item->delete($item_id);
-        header('location:/Item/index');
+	public function delete($favorite_id) {
+        $favorite = new \app\models\Favorite();
+        $favorite->delete($favorite_id);
+        header('location:/Favorite/index');
     }
 
 
