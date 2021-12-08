@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2021 at 03:29 AM
+-- Generation Time: Dec 08, 2021 at 08:20 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -46,7 +46,8 @@ CREATE TABLE `address` (
 --
 
 INSERT INTO `address` (`address_id`, `profile_id`, `street_num`, `street_name`, `postal_code`, `city`, `province`, `country`) VALUES
-(1, 1, 1122, 'adsfdfdg', 'sfsfs', 'sdsadad', 'adada', 'adadad');
+(1, 1, 1122, 'adsfdfdg', 'sfsfs', 'sdsadad', 'adada', 'adadad'),
+(2, 2, 1122, 'adsfdfdg', 'sfsfs', 'sdsadad', 'adada', 'adadad');
 
 -- --------------------------------------------------------
 
@@ -60,6 +61,13 @@ CREATE TABLE `favorite` (
   `item_id` int(11) NOT NULL,
   `profile_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `favorite`
+--
+
+INSERT INTO `favorite` (`favorite_id`, `item_id`, `profile_id`) VALUES
+(1, 4, 1);
 
 -- --------------------------------------------------------
 
@@ -85,11 +93,27 @@ CREATE TABLE `item` (
 --
 
 INSERT INTO `item` (`item_id`, `profile_id`, `item_name`, `item_pic`, `item_desc`, `item_price`, `posted_date`, `visits`, `status`) VALUES
-(1, 1, 'Actual Crepes', '/uploads/61b0161036be9.jpg', 'yummy', 2.99, '2021-12-07', 0, 'available'),
-(2, 1, 'macaroons', '/uploads/61b016347e170.jpg', 'yay', 3.24, '2021-12-07', 0, 'available'),
+(1, 1, 'Actual Crepes', '/uploads/61b0161036be9.jpg', 'yummy', 2.99, '2021-12-07', 0, 'unavailable'),
+(2, 1, 'macaroons', '/uploads/61b016347e170.jpg', 'yay', 3.24, '2021-12-07', 0, 'unavailable'),
 (3, 1, 'cake', '/uploads/61b0164713dc1.jpg', 'wert', 34, '2021-12-07', 0, 'available'),
 (4, 1, 'Jam scones', '/uploads/61b0165f8d879.png', 'wow', 3.2, '2021-12-07', 0, 'available'),
-(5, 1, 'banana crepes', '/uploads/61b0168483479.jpg', 'not a scam', 300, '2021-12-07', 0, 'available');
+(5, 1, 'banana crepes', '/uploads/61b0168483479.jpg', 'not a scam', 300, '2021-12-07', 0, 'unavailable');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `message`
+--
+
+DROP TABLE IF EXISTS `message`;
+CREATE TABLE `message` (
+  `message_id` int(11) NOT NULL,
+  `sender` int(11) NOT NULL,
+  `receiver` int(11) NOT NULL,
+  `message` text NOT NULL,
+  `read_status` enum('unread','read','reread') NOT NULL DEFAULT 'unread',
+  `private_status` enum('public','private') NOT NULL DEFAULT 'public'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -112,7 +136,8 @@ CREATE TABLE `profile` (
 --
 
 INSERT INTO `profile` (`profile_id`, `user_id`, `profile_name`, `email`, `phone_num`, `profile_pic`) VALUES
-(1, 1, 'Princess', 'mariaramlochan@hotmail.com', 2147483647, '/uploads/61afb208525e5.jpg');
+(1, 1, 'Princess', 'mariaramlochan@hotmail.com', 2147483647, '/uploads/61afb208525e5.jpg'),
+(2, 2, 'Bear', 'bear@gmail.com', 2147483647, '/uploads/61b03e1ad9ad6.jpg');
 
 -- --------------------------------------------------------
 
@@ -134,7 +159,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `username`, `password_hash`, `secret_key`, `last_login_timestamp`) VALUES
-(1, 'bunny', '$2y$10$RWvyAdk1X3Hzn08J6VIspe5uP8xgF4jcPLdszpS83YhjTGcy6nAs6', '', '2021-12-08 07:12:18');
+(1, 'bunny', '$2y$10$RWvyAdk1X3Hzn08J6VIspe5uP8xgF4jcPLdszpS83YhjTGcy6nAs6', '', '2021-12-08 12:17:05'),
+(2, 'bear', '$2y$10$9w5kS2uMWKqzvRkAH4SYLeIL3ZufOc3/ONQZyDHuycIq.rHnWuoZm', '', '2021-12-08 12:16:37');
 
 --
 -- Indexes for dumped tables
@@ -163,6 +189,14 @@ ALTER TABLE `item`
   ADD KEY `profile_item` (`profile_id`);
 
 --
+-- Indexes for table `message`
+--
+ALTER TABLE `message`
+  ADD PRIMARY KEY (`message_id`),
+  ADD KEY `message_sender` (`sender`),
+  ADD KEY `message_receiver` (`receiver`);
+
+--
 -- Indexes for table `profile`
 --
 ALTER TABLE `profile`
@@ -185,13 +219,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `address`
 --
 ALTER TABLE `address`
-  MODIFY `address_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `address_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `favorite`
 --
 ALTER TABLE `favorite`
-  MODIFY `favorite_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `favorite_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `item`
@@ -200,16 +234,22 @@ ALTER TABLE `item`
   MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `message`
+--
+ALTER TABLE `message`
+  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
@@ -233,6 +273,13 @@ ALTER TABLE `favorite`
 --
 ALTER TABLE `item`
   ADD CONSTRAINT `profile_item` FOREIGN KEY (`profile_id`) REFERENCES `profile` (`profile_id`);
+
+--
+-- Constraints for table `message`
+--
+ALTER TABLE `message`
+  ADD CONSTRAINT `message_receiver` FOREIGN KEY (`receiver`) REFERENCES `profile` (`profile_id`),
+  ADD CONSTRAINT `message_sender` FOREIGN KEY (`sender`) REFERENCES `profile` (`profile_id`);
 
 --
 -- Constraints for table `profile`
