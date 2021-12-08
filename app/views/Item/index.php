@@ -91,26 +91,27 @@
                     <table class="table table-bordered table-striped table-dark"> 
                         <thead>
                             <tr>
-                              <th scope="col">Item</th>
-                              <th scope="col">Type</th>
-                              <th scope="col">Theme</th>
-                              <th scope="col">Production Cost</th>
-                              <th scope="col">Sale Cost</th>
-                              <th scope="col">Sale Quantity</th>
-                              <th scope="col">Listed Quantity</th>
+                              <th scope="col">Item Image</th>
+                              <th scope="col">Item Name</th>
+                              <th scope="col">Item Description</th>
+                              <th scope="col">Item Price</th>
+                              <th scope="col">Posted Date</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                              <td>
-                              </td>
-                              <th scope="row">1</th>
-                              <td>@mdo</td>
-                              <td>Mark</td>
-                              <td>Otto</td>
-                              <td>@mdo</td>
-                              <td>Testing</td>
-                            </tr>
+                            <?php 
+                            foreach($data['item'] as $result) {
+                            echo " <tr> 
+                                        <td >
+                                            <img src='$result->item_pic' style='width:150px; height: 120px;'>
+                                        </td>
+                                        <td >$result->item_name</td>
+                                        <td style='word-wrap:break-word'>$result->item_desc</td>
+                                        <td >$result->item_price</td>
+                                        <td >$result->posted_date</td>
+                                    </tr>";
+                                }
+                            ?>
                         </tbody>
                     </table>
                  </div>
@@ -132,23 +133,17 @@
         </button>
       </div>
 
-      <form action="/ItemController/add" method="post">
+      <form action="/Item/insert" method="post"  enctype="multipart/form-data">
       <div class="modal-body">
         <center>
-            <h4 style="margin-right: 27%">Item name</h4>
-                <input type="text" name="itemName" class="inputModal">
-            <h4 style="margin-right: 38%">Type</h4>
-                <input type="text" name="type" class="inputModal">
-            <h4 style="margin-right: 35%">Theme</h4>
-                <input type="text" name="theme" class="inputModal">
-            <h4 style="margin-right: 18%">Production Cost</h4>
-                <input type="text" name="productionCost" class="inputModal">
-            <h4 style="margin-right: 30%">Sale Cost</h4>
-                <input type="text" name="saleCost" class="inputModal">
-            <h4 style="margin-right: 23%">Sale Quantity</h4>
-                <input type="text" name="saleQty" class="inputModal">
-            <h4 style="margin-right: 20%">Listed Quantity</h4>
-                <input type="text" name="listedQty" class="inputModal">
+            <h4 style="margin-right: 27%">Item Image</h4>
+                <input type="file" name="newPicture" class="inputModal">
+            <h4 style="margin-right: 38%">Item Name</h4>
+                <input type="text" name="item_name" class="inputModal">
+            <h4 style="margin-right: 35%">Item Description</h4>
+                <textarea type="text" name="item_desc" class="inputModal" style="width: 100%; height: 100%; resize:none;"></textarea>
+            <h4 style="margin-right: 18%">Price</h4>
+                <input type="number" name="item_price" class="inputModal" min="0" step=".01">
         </center>
       </div>
       <div class="modal-footer">
@@ -165,7 +160,7 @@
 
 <!-- Modal Popup(Add new Item) -->
         
-    </div>
+</div>
 <!-- Content Here -->
 </body>
 </html>

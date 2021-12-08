@@ -21,7 +21,7 @@ class Item extends \app\core\Model{
         $STMT = self::$_connection->prepare($SQL);
         $STMT->execute(['profile_id'=>$profile_id]);
         $STMT->setFetchMode(\PDO::FETCH_CLASS,'app\\models\\Item');
-        return $STMT->fetch();
+        return $STMT->fetchAll();
     }
 
 	public function getAll(){
@@ -34,9 +34,9 @@ class Item extends \app\core\Model{
 
 	public function insert(){
 		$SQL = 'INSERT INTO item(profile_id, item_name, item_pic, item_desc, item_price, visits) 
-		VALUES (:user_id, :item_name, :item_pic, :item_desc, :item_price, :visits)';
+		VALUES (:profile_id, :item_name, :item_pic, :item_desc, :item_price, :visits)';
 		$STMT = self::$_connection->prepare($SQL);
-		$STMT->execute(['user_id'=>$this->user_id,'item_name'=>$this->item_name, 'item_pic'=>$this->item_pic,
+		$STMT->execute(['profile_id'=>$this->profile_id,'item_name'=>$this->item_name, 'item_pic'=>$this->item_pic,
 			'item_desc'=>$this->item_desc, 'item_price'=>$this->item_price, 'visits'=>$this->visits]);
 	}
 

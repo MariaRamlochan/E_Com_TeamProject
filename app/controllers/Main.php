@@ -18,6 +18,7 @@ class Main extends \app\core\Controller{
 			$user = $user->get($_POST['username']);
 			$_SESSION['user_id'] = $user->user_id;
 			$_SESSION['username'] = $user->username;
+
 			header('location:/Profile/insert');
 		}else
 			$this->view('Main/register');

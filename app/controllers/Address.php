@@ -24,6 +24,11 @@ class Address extends \app\core\Controller{
             $address->country  = $_POST['country'];
     		$address->insert();
     		//redirect the user back to the index
+
+            $profile = new \app\models\Profile();
+            $profile = $profile->get($_SESSION['user_id']);
+            $_SESSION['profile_id'] = $profile->profile_id;
+            $_SESSION['profile_name'] = $profile->profile_name;
     		header("location:/Profile/index");
                 
         } else {
