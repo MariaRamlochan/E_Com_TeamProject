@@ -14,51 +14,13 @@ class Favorite extends \app\core\Controller{
 		$this->view('Favorite/index',['item'=>$items, 'user'=>$user]);
 	}
 
-	public function insert(){
-		$profile_id = $_SESSION['profile_id'];
+	public function insert($item_id){
+        $favorite = new \app\models\Favorite();
+        $favorite->profile_id = $_SESSION['profile_id'];
+        $favorite->item_id = $item_id;
+        $favorite->insert();
 
-		if(isset($_POST['action'])){
-            if ($_FILES['newPicture']['size']>0) {
-                $check = getimagesize($_FILES['newPicture']['tmp_name']);
-                $mime_type_to_extension = ['image/jpeg'=>'.jpg',
-                                            'image/gif'=>'.gif',
-                                            'image/bmp'=>'.bmp',
-                                            'image/png'=>'.png'
-                                            ];
-                if($check !== false && isset($mime_type_to_extension[$check['mime']])){
-                    $extension = $mime_type_to_extension[$check['mime']];
-                }else{
-                    $this->view('Profile/index', ['error'=>"Bad file type",'pictures'=>[]]);
-                    return;
-                }
-                
-                $filename = uniqid().$extension;
-                $filepath = $this->folder.$filename;
-
-                if($_FILES['newPicture']['size'] > 4000000){
-                     $this->view('Profile/index', ['error'=>"File too large",'pictures'=>[]]);
-                     return;
-                }
-                if(move_uploaded_file($_FILES['newPicture']['tmp_name'], $filepath)){
-                    $item = new \app\models\Item();
-					$item->profile_id = $profile_id;
-					$item->item_name = $_POST['item_name'];
-					$item->item_desc = $_POST['item_desc'];
-					$item->item_price = $_POST['item_price'];
-					$item->item_pic = "/".$this->folder.$filename;
-					$profile->insert();
-
-                    $item_id = $item->get($profile_id);
-                    $_SESSION['item_id'] = $item->$item_id;
-					//redirect the user back to the index
-					header("location:/Item/idex");
-                } else{
-                    echo "There was an error";
-                } 
-            }
-        } else {
-            $this->view('Item/add');
-        }
+		header("location:/Item/index");
     }
 
 

@@ -30,7 +30,7 @@ class Favorite extends \app\core\Model{
 		$SQL = 'INSERT INTO favorite(profile_id, item_id) 
 		VALUES (:profile_id, :item_id)';
 		$STMT = self::$_connection->prepare($SQL);
-		$STMT->execute(['profile_id'=>$this->profile_id, 'user_id'=>$this->user_id]);
+		$STMT->execute(['profile_id'=>$this->profile_id, 'item_id'=>$this->item_id]);
 	}
 
 	public function delete($favorite_id){

@@ -18,7 +18,9 @@
 <div class="sidenav">
     <center>
 
-    <img src="/images/bunny.gif" class='img-thumbnail img-fluid' alt="Responsive image" id='logo' alt="">
+
+
+    <img src="<?=$_SESSION['profile_pic'] ?>" class='img-thumbnail img-fluid' alt="Responsive image" id='logo' alt="">
     <center>
 
     <h2 class="nav-title" style="color:white; margin-top: 30px">
@@ -53,10 +55,8 @@
 <!-- Top Bar -->
     <div class="p-4 topBar">
         <ul id="right-side">
-            <a href="">username
-                <img src="https://i.imgur.com/HMF0ega.jpeg" id="profilepic">
-            <!-- <img src="<?php echo $user['profile_pic'];?>" id="profilepic"> -->
-            <!-- <?php echo $user['user_name'];?> -->
+            <a href="">About Us
+                <img src="/images/bunny.gif" id="profilepic">
             </a>
         </ul>
     </div>
@@ -69,8 +69,8 @@
         <!-- Title and Search Bar -->
         <div class="container" style="margin-left: 8%"> 
             <form action="/Item/search" method="POST">
-                    <div style='display:inline-block; margin-top: 4%'><h1 style="display:inline;color:white; width: 50%; font-size: 400%">Items for Sale</h1></div>
-                    <div style='display:inline-block;'><input type="search" class="form-control rounded" placeholder="Search" style="width: 150%; margin-left: 145%" /></div>
+                <div style='display:inline-block; margin-top: 4%'><h1 style="display:inline;color:white; width: 50%; font-size: 400%">Items for Sale</h1></div>
+                <div style='display:inline-block;'><input type="search" class="form-control rounded" placeholder="Search" style="width: 150%; margin-left: 145%" /></div>
             </form>
         </div>
 
@@ -89,11 +89,13 @@
                               <th scope="col">Description</th>
                               <th scope="col">Price</th>
                               <th scope="col">Post Date</th>
+                              <th scope="col">Add to Favorite?</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php 
                             foreach($data as $result) {
+                                $profile_id = $_SESSION['profile_id'];
                             echo " <tr> 
                                         <td >
                                             <img src='$result->item_pic' style='width:150px; height: 120px;'>
@@ -102,6 +104,9 @@
                                         <td style='word-wrap:break-word'>$result->item_desc</td>
                                         <td >$result->item_price</td>
                                         <td >$result->posted_date</td>
+                                        <td >
+                                             <a href='/Favorite/insert/$result->item_id' class='btn btn-danger' style='width:100%;''>Favorite</a>
+                                        </td>
                                     </tr>";
                                 }
                             ?>

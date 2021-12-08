@@ -29,6 +29,7 @@ class Address extends \app\core\Controller{
             $profile = $profile->get($_SESSION['user_id']);
             $_SESSION['profile_id'] = $profile->profile_id;
             $_SESSION['profile_name'] = $profile->profile_name;
+            $_SESSION['profile_pic'] = $profile->profile_pic;
     		header("location:/Profile/index");
                 
         } else {
