@@ -67,17 +67,18 @@
     <div class="blue-box">
 
         <!-- Title and Search Bar -->
-        <div class="container" style="margin-left: 8%"> 
+        <div class="container" style="margin-left: 10%"> 
             <form action="/Item/search" method="POST">
-                <div style='display:inline-block; margin-top: 4%'><h1 style="display:inline;color:white; width: 50%; font-size: 400%">Items for Sale</h1></div>
-                <div style='display:inline-block;'><input type="search" class="form-control rounded" placeholder="Search" style="width: 150%; margin-left: 145%" /></div>
+                    <div style='display:inline-block; margin-top: 4%'><h1 style="display:inline;color:white; width: 50%; font-size: 400%">Items for Sale</h1></div>
+                    <div style='display:inline-block; margin-left: 33%'><input type="search" class="form-control rounded" placeholder="Search" style="width: 150%; margin-left: 145%" />
+                    </div>
             </form>
         </div>
 
 
     <!-- Item View -->
     <div style='display:inline-block; height: 55%'>
-        <div class="container insideColor" style="height: 165%; margin-left: 28%; 
+        <div class="container insideColor" style="margin-left: 28%; 
                 margin-top: 5%; width: 400%; height: 145%">
             <section class="p-3" style="width: 100%;margin-top: 1.5%">
                 <div class="table-wrapper-scroll-y my-custom-scrollbarSell">
@@ -89,13 +90,11 @@
                               <th scope="col">Description</th>
                               <th scope="col">Price</th>
                               <th scope="col">Post Date</th>
-                              <th scope="col">Add to Favorite?</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php 
                             foreach($data as $result) {
-                                $profile_id = $_SESSION['profile_id'];
                             echo " <tr> 
                                         <td >
                                             <img src='$result->item_pic' style='width:150px; height: 120px;'>
@@ -104,9 +103,6 @@
                                         <td style='word-wrap:break-word'>$result->item_desc</td>
                                         <td >$result->item_price</td>
                                         <td >$result->posted_date</td>
-                                        <td >
-                                             <a href='/Favorite/insert/$result->item_id' class='btn btn-danger' style='width:100%;''>Favorite</a>
-                                        </td>
                                     </tr>";
                                 }
                             ?>
@@ -117,6 +113,5 @@
         </div>
     </div> 
 </div>
-<!-- Content Here -->
 </body>
 </html>

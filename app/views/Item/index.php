@@ -69,7 +69,7 @@
      <!-- Title and Search Bar -->
      <div class="container" style="margin-left: 7%;"> 
          <form action="/Item/search" method="POST">
-                 <div style='display:inline-block; margin-top: 4%'><h1 style="display:inline;color:white; width: 50%; font-size: 400%">Items for Sale</h1>
+                 <div style='display:inline-block; margin-top: 4%'><h1 style="display:inline;color:white; width: 50%; font-size: 400%">Your Treasures</h1>
                  </div>
                  <div style='display:inline-block; margin-left: 35%'><input type="search" class="form-control rounded" placeholder="Search" style="width: 150%; margin-left: 145%"/>
                  </div>
@@ -142,14 +142,14 @@
       <form action="/Item/insert" method="post"  enctype="multipart/form-data">
       <div class="modal-body">
         <center>
-            <h4 style="margin-right: 27%">Item Image</h4>
-                <input type="file" name="newPicture" class="inputModal">
+            <h4 style="margin-right: 38%">Item Image</h4>
+                <input type="file" name="newPicture" class="inputModal" style="width: 60%">
             <h4 style="margin-right: 38%">Item Name</h4>
-                <input type="text" name="item_name" class="inputModal">
-            <h4 style="margin-right: 35%">Item Description</h4>
-                <textarea type="text" name="item_desc" class="inputModal" style="width: 100%; height: 100%; resize:none;"></textarea>
-            <h4 style="margin-right: 18%">Price</h4>
-                <input type="number" name="item_price" class="inputModal" min="0" step=".01">
+                <input type="text" name="item_name" class="inputModal" style="color: black; width: 60%">
+            <h4 style="margin-right: 48%">Price</h4>
+                <input type="number" name="item_price" class="inputModal" min="0" step=".01" style="color: black; width: 60%">
+            <h4 style="margin-right: 70%">Item Description</h4>
+                <textarea type="text" name="item_desc" class="inputModal" style="width: 100%; height: 100%; resize:none; color: black;"></textarea>
         </center>
       </div>
       <div class="modal-footer">

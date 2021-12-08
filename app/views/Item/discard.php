@@ -67,41 +67,145 @@
     <div class="blue-box">
 
         <!-- Title and Search Bar -->
-        <div class="container"> 
-            <div class="row">
-                <form action="/Item/search" method="POST">
-                    <div class="col-12 d-flex flex-row" style="margin-top: 2%;">
-                        <h1 style="color:white; width: 80%; font-size: 400%">Your Past Sales</h1>
-                        <input type="search" class="form-control rounded" placeholder="Search" style="" />
-                        <span class="input-group-text border-0" id="search-addon">
-                            <i><img src="/images/search-icon.png"></i>
-                        </span>
-                    </div>
-                </form>
-            </div>
-        </div>
+        <div class="container" style="margin-left: 9%;"> 
+         <form action="/Item/search" method="POST">
+                 <div style='display:inline-block; margin-top: 4%'><h1 style="display:inline;color:white; width: 50%; font-size: 400%">Your Histories</h1>
+                 </div>
+                 <div style='display:inline-block; margin-left: 35%'><input type="search" class="form-control rounded" placeholder="Search" style="width: 150%; margin-left: 145%"/>
+                 </div>
+         </form>
+     </div>
 
 
         <!-- Item View -->
-        <div class="container" style="margin-top: 5%;">
-            <div class="row overflow-auto" style="width: 90%; height: 50%; margin-left: 5%">
-                <div> 
-                    <table class="table table-light table-hover" style="table-layout: fixed;">
-                        <tr class="table-secondary">
-                            <th style="width: 20%"></th>
-                            <th style="width: 13%"></th>
-                            <th style="width: 30%"></th>
-                            <th style="width:  9%"></th>
-                            <th style="width:  9%"></th>
-                            <th style="width:  9%"></th>
-                        </tr>
-   
+    <div style='display:inline-block; height: 55%'>
+        <div class="container insideColor" style="margin-left: 20%; 
+                margin-top: 5%; width: 400%; height: 145%">
+            <section class="p-3" style="width: 86%; margin-top: 1.5%">
+
+                <div class="table-wrapper-scroll-y my-custom-scrollbarSell" 
+                        style="width: 117%; margin-top: 0.5%">
+
+                    <table class="table table-bordered table-striped table-dark"> 
+                        <thead>
+                            <tr>
+                              <th scope="col">Item Image</th>
+                              <th scope="col">Item Name</th>
+                              <th scope="col">Item Description</th>
+                              <th scope="col">Item Price</th>
+                              <th scope="col">Posted Date</th>
+                              <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php 
+                            foreach($data['item'] as $result) {
+                            echo " <tr> 
+                                        <td >
+                                            <img src='$result->item_pic' style='width:150px; height: 120px;'>
+                                        </td>
+                                        <td >$result->item_name</td>
+                                        <td style='word-wrap:break-word'>$result->item_desc</td>
+                                        <td >$result->item_price</td>
+                                        <td >$result->posted_date</td>
+                                        <td >
+                                            <a href='/Item/edit/$result->item_id' class='btn btn-primary' style='width:100%;''>Edit</a>
+
+                                            <a href='/Item/discard/$result->item_id' class='btn btn-danger' style='width:100%;''>Remove</a>
+                                        </td>
+                                    </tr>";
+                                }
+                            ?>
+                        </tbody>
                     </table>
-                </div>
-            </div>
+                 </div>
+            </section>
         </div>
-        
     </div>
+
+<!-- Modal Popup(Add New Item)-->
+
+<div class="modal fade" id="modalCenter" tabindex="-1" role="dialog" 
+     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLongTitle" style="margin-left: 40%">Add Item</h3>
+        <button type="button" class="close" data-dismiss="modal" 
+                aria-label="Close" style="padding-left: 30%">
+          <span aria-hidden="true" style="color:white">&times;</span>
+        </button>
+      </div>
+
+      <form action="/Item/insert" method="post"  enctype="multipart/form-data">
+      <div class="modal-body">
+        <center>
+            <h4 style="margin-right: 27%">Item Image</h4>
+                <input type="file" name="newPicture" class="inputModal">
+            <h4 style="margin-right: 38%">Item Name</h4>
+                <input type="text" name="item_name" class="inputModal">
+            <h4 style="margin-right: 35%">Item Description</h4>
+                <textarea type="text" name="item_desc" class="inputModal" style="width: 100%; height: 100%; resize:none;"></textarea>
+            <h4 style="margin-right: 18%">Price</h4>
+                <input type="number" name="item_price" class="inputModal" min="0" step=".01">
+        </center>
+      </div>
+      <div class="modal-footer">
+        <center>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <input type="submit" name="action" class="btn btn-primary" value="Save"/>
+        </center>
+      </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<!-- Modal Popup(Add new Item) -->
+
+<!-- Modal Popup(Edit Item)-->
+
+<div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" 
+     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLongTitle" style="margin-left: 40%">Edit Item</h3>
+        <button type="button" class="close" data-dismiss="modal" 
+                aria-label="Close" style="padding-left: 30%">
+          <span aria-hidden="true" style="color:white">&times;</span>
+        </button>
+      </div>
+
+      <form action="/Item/edit($item->item_id)" method="post"  enctype="multipart/form-data">
+      <div class="modal-body">
+        <center>
+            <h4 style="margin-right: 27%">Edit Image</h4>
+                <img src='<?=$item->item_pic?>'>
+            <h4 style="margin-right: 38%">Item Name</h4>
+                <input type='text' name='item_name' class='inputModal' value='<?php echo $item['item_name']; ?>'>
+            <h4 style="margin-right: 35%">Item Description</h4>
+                <textarea type="text" name="item_desc" class="inputModal" style="width: 100%; height: 100%; resize:none;"><?php echo $data['item']->item_description; ?></textarea>
+            <h4 style="margin-right: 18%">Price</h4>
+                <input type="number" name="item_price" class="inputModal" min="0" step=".01">
+        </center>
+      </div>
+      <div class="modal-footer">
+        <center>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <input type="submit" name="action" class="btn btn-primary" value="Save"/>
+        </center>
+      </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<!-- Modal Popup(Edit Item) -->
+
+</div>
 <!-- Content Here -->
 </body>
 </html>
