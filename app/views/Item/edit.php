@@ -18,7 +18,7 @@
 <div class="sidenav">
     <center>
 
-    <img src="/images/bunny.gif" class='img-thumbnail img-fluid' alt="Responsive image" id='logo' alt="">
+    <img src="<?=$_SESSION['profile_pic'] ?>" class='img-thumbnail img-fluid' alt="Responsive image" id='logo' alt="">
     <center>
 
     <h2 class="nav-title" style="color:white; margin-top: 30px">
@@ -29,13 +29,13 @@
         <hr class="admin-hr">
         <a href="/Profile/index">Search</a>
         <hr class="admin-hr">
-        <a href="/Item/add">Sell</a>
+        <a style="color: #2fadfc;" href="/Item/add">Sell</a>
         <hr class="admin-hr">
         <a href="/Favorite/index">Favorites</a>
         <hr class="admin-hr">
         <a href="/Message/index">Messages</a>
         <hr class="admin-hr">
-        <a style="color: #2fadfc;" href="/Item/past">Past Post</a>
+        <a href="/Item/past">Past Post</a>
         <hr class="admin-hr">
     </div>
     </center>
@@ -53,10 +53,8 @@
 <!-- Top Bar -->
     <div class="p-4 topBar">
         <ul id="right-side">
-            <a href="">username
-                <img src="https://i.imgur.com/HMF0ega.jpeg" id="profilepic">
-            <!-- <img src="<?php echo $user['profile_pic'];?>" id="profilepic"> -->
-            <!-- <?php echo $user['user_name'];?> -->
+            <a href="">About us
+                <img src="/images/bunny.gif" id="profilepic">
             </a>
         </ul>
     </div>
@@ -80,18 +78,22 @@
     <div style='display:inline-block; height: 55%'>
         <div class="container insideColor" style="margin-left: 50%; margin-top: 5%; width: 500%; height: 145%">
 
-            <form action="/Item/insert" method="post"  enctype="multipart/form-data">
+            <form action="/Item/edit/<?=$data['item']->item_id?>" method="post"  enctype="multipart/form-data">
                 <div>
                     <center>
                         <h4 style="margin-right: 52%">Item Image</h4>
+                            <img src='<?=$data['item']->item_pic?>' style="width:150px; height: 120px;">
                             <input class="editDesign btn btn-primary" type="file" name="newPicture" 
                                 style="width: 60%; border-radius: 20px">
+
                         <h4 style="margin-right: 52%">Item Name</h4>
-                            <input class="editDesign" type="text" name="item_name" style="color: black; width: 60%">
+                            <input class="editDesign" type="text" name="item_name" value='<?php echo $data['item']->item_name; ?>' style="color: black; width: 60%">
+
                         <h4 style="margin-right: 55%">Price</h4>
-                            <input class="editDesign" type="number" name="item_price" min="0" step=".01" style="color: black; width: 60%">
+                            <input class="editDesign" type="number" name="item_price" value='<?php echo $data['item']->item_price; ?>' min="0" step=".01" style="color: black; width: 60%">
+
                         <h4 style="margin-right: 78%">Item Description</h4>
-                            <textarea class="editDesign" type="text" name="item_desc" style="width: 90%; height: 45%; resize:none; color: black;"></textarea>
+                            <textarea class="editDesign" name="item_desc" style="width: 90%; height: 45%; resize:none; color: black;"><?php echo $data['item']->item_desc; ?></textarea>
                     </center>
                 </div>
                 <div>
@@ -99,7 +101,7 @@
                     <input type="submit" name="action" class="btn btn-success btn-lg" value="Save" style="width: 50%" />
                     </center>
                 </div>
-      </form>
+            </form>
             
         </div>
     </div>

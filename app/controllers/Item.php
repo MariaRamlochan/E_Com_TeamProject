@@ -61,7 +61,7 @@ class Item extends \app\core\Controller{
 	public function edit($item_id){
 
 		$item = new \app\models\Item;
-		$item = $item->get($_SESSION['profile_id']);
+		$item = $item->getSpecificItem($item_id);
 
 		if(isset($_POST['action'])){
             if ($_FILES['newPicture']['size']>0) {
@@ -86,12 +86,11 @@ class Item extends \app\core\Controller{
                      return;
                 }
                 if(move_uploaded_file($_FILES['newPicture']['tmp_name'], $filepath)){
-                    $item = new \app\models\Item();
-                    $item->profile_id = $_SESSION['profile_id'];
                     $item->item_name = $_POST['item_name'];
                     $item->item_desc = $_POST['item_desc'];
                     $item->item_price = $_POST['item_price'];
                     $item->item_pic = "/".$this->folder.$filename;
+                    $item->item_id = $item_id;
 					$item->update();
 					//redirect the user back to the index
 					header("location:/Item/index");
@@ -99,18 +98,18 @@ class Item extends \app\core\Controller{
                     echo "There was an error";
                 } 
             } else {
-                    $item->profile_id = $_SESSION['profile_id'];
+                    $item = $item->getSpecificItem($item_id);
                     $item->item_name = $_POST['item_name'];
                     $item->item_desc = $_POST['item_desc'];
                     $item->item_price = $_POST['item_price'];
-                    $item->item_pic = "/".$this->folder.$filename;
+                    $item->item_id = $item_id;
                     $item->update();
 
                     header("location:/Item/index");
             }
 
         }else //1 present a form to the user
-            $this->view('Item/edit', $item);
+            $this->view('Item/edit', ['item'=>$item]);
     }
 
 	public function discard($item_id) {
