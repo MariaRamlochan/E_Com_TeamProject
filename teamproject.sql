@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2021 at 08:20 AM
+-- Generation Time: Dec 08, 2021 at 09:37 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -127,7 +127,7 @@ CREATE TABLE `profile` (
   `user_id` int(11) NOT NULL,
   `profile_name` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `phone_num` int(10) NOT NULL,
+  `phone_num` varchar(10) NOT NULL,
   `profile_pic` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -136,8 +136,8 @@ CREATE TABLE `profile` (
 --
 
 INSERT INTO `profile` (`profile_id`, `user_id`, `profile_name`, `email`, `phone_num`, `profile_pic`) VALUES
-(1, 1, 'Princess', 'mariaramlochan@hotmail.com', 2147483647, '/uploads/61afb208525e5.jpg'),
-(2, 2, 'Bear', 'bear@gmail.com', 2147483647, '/uploads/61b03e1ad9ad6.jpg');
+(1, 1, 'Princess', 'mariaramlochan@hotmail.com', '2147483647', '/uploads/61afb208525e5.jpg'),
+(2, 2, 'Bear', 'bear@gmail.com', '2147483647', '/uploads/61b03e1ad9ad6.jpg');
 
 -- --------------------------------------------------------
 
@@ -159,7 +159,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `username`, `password_hash`, `secret_key`, `last_login_timestamp`) VALUES
-(1, 'bunny', '$2y$10$RWvyAdk1X3Hzn08J6VIspe5uP8xgF4jcPLdszpS83YhjTGcy6nAs6', '', '2021-12-08 12:17:05'),
+(1, 'bunny', '$2y$10$RWvyAdk1X3Hzn08J6VIspe5uP8xgF4jcPLdszpS83YhjTGcy6nAs6', '', '2021-12-08 13:25:22'),
 (2, 'bear', '$2y$10$9w5kS2uMWKqzvRkAH4SYLeIL3ZufOc3/ONQZyDHuycIq.rHnWuoZm', '', '2021-12-08 12:16:37');
 
 --
