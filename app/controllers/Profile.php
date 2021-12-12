@@ -65,7 +65,7 @@ class Profile extends \app\core\Controller{
     }
 
 
-	public function edit(){
+	public function edit($profile_id){
 
 		$profile = new \app\models\Profile;
 		$profile = $profile->get($_SESSION['user_id']);
@@ -76,12 +76,13 @@ class Profile extends \app\core\Controller{
                 $mime_type_to_extension = ['image/jpeg'=>'.jpg',
                                             'image/gif'=>'.gif',
                                             'image/bmp'=>'.bmp',
-                                            'image/png'=>'.png'
+                                            'image/png'=>'.png',
+                                            'image/jfif'=>'.jfif'
                                             ];
                 if($check !== false && isset($mime_type_to_extension[$check['mime']])){
                     $extension = $mime_type_to_extension[$check['mime']];
                 }else{
-                    $this->view('Profile/index', ['error'=>"Bad file type",'pictures'=>[]]);
+                    $this->view('Profile/settings', ['error'=>"Bad file type",'pictures'=>[]]);
                     return;
                 }
                 
@@ -89,31 +90,32 @@ class Profile extends \app\core\Controller{
                 $filepath = $this->folder.$filename;
 
                 if($_FILES['newPicture']['size'] > 4000000){
-                     $this->view('Admin/Food/food', ['error'=>"File too large",'pictures'=>[]]);
+                     $this->view('Profile/settings', ['error'=>"File too large",'pictures'=>[]]);
                      return;
                 }
                 if(move_uploaded_file($_FILES['newPicture']['tmp_name'], $filepath)){
                     $profile = new \app\models\Profile();
-					$profile->user_id = $_SESSION['user_id'];
+					$profile->profile_id = $profile_id;
 					$profile->profile_name = $_POST['profile_name'];
 					$profile->email = $_POST['email'];
 					$profile->phone_num = $_POST['phone_num'];
 					$profile->profile_pic = "/".$this->folder.$filename;
-					$profile->edit();
+					$profile->update();
+                    $_SESSION['profile_pic'] = $profile->profile_pic;
 					//redirect the user back to the index
-					header("location:/Profile/index");
+					header("location:/Profile/settings");
                 } else{
                     echo "There was an error";
                 } 
             } else {
-                    $profile->user_id = $user_id;
+                    $profile->profile_id = $profile_id;
 					$profile->profile_name = $_POST['profile_name'];
 					$profile->email = $_POST['email'];
 					$profile->phone_num = $_POST['phone_num'];
-					$profile->profile_pic = "/".$this->folder.$filename;
-					$profile->edit();
+					$profile->update();
+                    $_SESSION['profile_pic'] = $profile->profile_pic;
 
-                    header("location:/Profile/index");
+                    header("location:/Profile/settings");
             }
 
         }else //1 present a form to the user
@@ -126,6 +128,14 @@ class Profile extends \app\core\Controller{
 		$profile = $profile->get($profile_id);
 		$this->view('/Profile/details',$profile);
 	}
+
+    public function delete($user_id){
+
+        $user = new \app\models\User;
+        $user = $user->getUser($user_id);
+        $user->delete($user_id);
+        header("location:/Profile/settings");
+    }
 
 
     public function search(){

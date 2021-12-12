@@ -78,11 +78,10 @@
                 <div class="container p-5 insideColor" style="margin-right: 30%; width: 50%; height: 67%; margin-top: 5%">
 
                     <br>
-                    <a class="btn btn-lg btn-danger" href="/Profile/edit" 
+                    <a class="btn btn-lg btn-danger" href="/Profile/edit/<?=$_SESSION['user_id']?>" 
                             style="width: 80%; border-radius: 15px; height: 12%">Edit Profile</a>
                     <br><hr>
-                    <a class="btn btn-lg btn-danger" href="/Address/edit" 
-                            style="width: 80%; border-radius: 15px; height: 12%">Edit Address</a>
+                    <a class="btn btn-lg btn-danger" href="/Address/edit/<?=$_SESSION['address_id']?>" style="width: 80%; border-radius: 15px; height: 12%">Edit Address</a>
                     <br><hr>
                     <a class="btn btn-lg btn-danger" href="/Main/changePassword" 
                             style="width: 80%; border-radius: 15px; height: 12%">Change Password</a>
@@ -90,12 +89,54 @@
                     <a class="btn btn-lg btn-danger" href="/Main/setup2fa" 
                             style="width: 80%; border-radius: 15px; height: 12%">Setup 2FA</a>
                     <br><hr>
-                    <a class="btn btn-lg btn-danger" href="/Profile/delete" 
+                    <a class="btn btn-lg btn-danger" href="/User/delete/<?=$_SESSION['address_id']?>" 
                             style="width: 80%; border-radius: 15px; height: 12%">Delete Account</a>
+
+                    <br><hr>
+                    <!-- modal button trigger -->
+                    <button type="button" class="btn btn-danger btn-rounded" data-toggle="modal" 
+                        data-target="#modalCenter" style="width: 80%; border-radius: 15px; height: 12%">Delete</button>
+                    <!-- modal button trigger -->
 
                 </div>
             </div>
-        </center></div>
+        </center>
+
+
+        <!-- Modal Popup(Add New Item)-->
+
+        <div class="modal fade" id="modalCenter" tabindex="-1" role="dialog" 
+             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLongTitle" style="margin-left: 40%">Delete Account?</h3>
+                <button type="button" class="close" data-dismiss="modal" 
+                        aria-label="Close" style="padding-left: 30%">
+                  <span aria-hidden="true" style="color:white">&times;</span>
+                </button>
+              </div>
+
+              <form action="/Profile/delete/<?=$_SESSION['user_id']?>" method="post">
+              <div class="modal-body">
+                <center>
+                    <h4 style="margin-right: 38%">Would you like to delete your account?</h4>
+                </center>
+              </div>
+              <div class="modal-footer">
+                <center>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                <input type="submit" name="action" class="btn btn-primary" value="Yes"/>
+                </center>
+              </div>
+              </form>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal Popup(Add new Item) -->
+    </div>
 <!-- Content Here -->
 </body>
 </html>

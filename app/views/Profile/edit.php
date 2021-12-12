@@ -53,10 +53,8 @@
 <!-- Top Bar -->
     <div class="p-4 topBar">
         <ul id="right-side">
-            <a href="">username
-                <img src="https://i.imgur.com/HMF0ega.jpeg" id="profilepic">
-            <!-- <img src="<?php echo $user['profile_pic'];?>" id="profilepic"> -->
-            <!-- <?php echo $user['user_name'];?> -->
+            <a href="">About Us
+                <img src="/images/bunny.gif" id="profilepic">
             </a>
         </ul>
     </div>
@@ -79,7 +77,11 @@
             <div class="container">
                 <div class="container p-5 insideColor" style="margin-right: 30%; width: 50%; height: 50%; margin-top: 5%">
 
-                    <form action='' method='post'>
+                    <form action='' method='post' enctype='multipart/form-data'>
+                        <img src='<?php echo $data['profile']->profile_pic; ?>' style='width:150px; height: 120px;'>
+                            <input class="editDesign btn btn-primary" type="file" name="newPicture" 
+                                style="width: 60%; border-radius: 20px">
+
                         <h4 style="margin-right: 37%">Profile name</h4>
                             <input type='text' name='profile_name' value='<?php echo $data['profile']->profile_name; ?>' 
                             style="width: 60%; border-radius: 15px"/><br><br>
@@ -102,16 +104,3 @@
 <!-- Content Here -->
 </body>
 </html>
-
-
-<!-- <div class="blue-box">
-        <center>
-            <h2>Edit Your Profile Information</h2>
-            <form action='' method='post'>
-                Profile Name: <input type='text' name='profile_name' value='<?php echo $data['profile']->profile_name; ?>' /><br>
-                Email: <input type='text' name='email' value='<?php echo $data['profile']->email; ?>' /><br>
-                Phone Number: <input type='text' name='phone_num' value='<?php echo $data['profile']->phone_num; ?>' /><br>
-                <input type='submit' name='action' value='Save changes' />
-            </form>
-        </center>
-    </div> -->

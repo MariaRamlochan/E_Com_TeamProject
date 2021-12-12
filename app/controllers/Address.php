@@ -11,7 +11,6 @@ class Address extends \app\core\Controller{
 	}
 
 	public function insert(){
-		$profile_id = $_SESSION['profile_id'];
 
 		if(isset($_POST['action'])){
             $address = new \app\models\Address();
@@ -23,8 +22,8 @@ class Address extends \app\core\Controller{
             $address->province  = $_POST['province'];
             $address->country  = $_POST['country'];
     		$address->insert();
-    		//redirect the user back to the index
 
+            $_SESSION['address_id'] = $address->address_id;
             $profile = new \app\models\Profile();
             $profile = $profile->get($_SESSION['user_id']);
             $_SESSION['profile_id'] = $profile->profile_id;
@@ -38,25 +37,24 @@ class Address extends \app\core\Controller{
     }
 
 
-	public function edit(){
+	public function edit($address_id){
 		$address = new \app\models\Address;
-		$address = $address->get($_SESSION['profile_id']);
+		$address = $address->getAddress($address_id);
 
 		if(isset($_POST['action'])){
-           
             $address = new \app\models\Address();
-            $address->profile_id = $_SESSION['profile_id'];
             $address->street_num = $_POST['street_num'];
             $address->street_name = $_POST['street_name'];
             $address->postal_code = $_POST['postal_code'];
             $address->city = $_POST['city'];
             $address->province  = $_POST['province'];
             $address->country  = $_POST['country'];
-			$profile->edit();
-			//redirect the user back to the index
-			header("location:/Address/index");
+            $address->address_id = $address_id;
+			$address->update();
 
-        }else //1 present a form to the user
+			header("location:/Profile/settings");
+
+        }else
             $this->view('Address/edit', ['address'=>$address]);
     }
 

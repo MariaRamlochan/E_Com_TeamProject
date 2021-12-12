@@ -115,7 +115,9 @@
                                             $profile->phone_num
                                         </td>
                                         <td>
-                                            <a href='/Favorite/delete/$favorite->favorite_id' class='btn btn-danger' style='width:100%;''>Unfavorite</a>
+                                            <center>
+                                                <a href='/Favorite/delete/$favorite->favorite_id' class='btn btn-danger' style='width:70%;''>Unfavorite 💔</a>
+                                            </center>
                                         </td>
                                     </tr>";
                                 }

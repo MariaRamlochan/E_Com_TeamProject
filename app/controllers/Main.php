@@ -44,6 +44,9 @@ class Main extends \app\core\Controller{
         		$_SESSION['profile_id'] = $profile->profile_id;
         		$_SESSION['profile_name'] = $profile->profile_name;
         		$_SESSION['profile_pic'] = $profile->profile_pic;
+        		$address = new \app\models\Address();
+        		$address = $address->get($_SESSION['profile_id']);
+        		$_SESSION['address_id'] = $address->address_id;
 				if($user->secret_key != '')
 					$_SESSION['secret_key'] = $user->secret_key;
 				header('location:'.BASE.'Profile/index');

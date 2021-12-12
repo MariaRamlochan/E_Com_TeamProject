@@ -80,7 +80,7 @@
     <div style='display:inline-block; height: 55%'>
         <div class="container insideColor" style="margin-left: 19%; 
                 margin-top: 5%; width: 400%; height: 145%">
-            <section class="p-3" style="width: 100%;margin-top: 1.5%">
+            <section class="p-3" style="width: 100%;margin-top: 1.5%;">
                 <div class="table-wrapper-scroll-y my-custom-scrollbarSell">
                     <table class="table table-bordered table-striped table-dark"> 
                         <thead>
@@ -114,7 +114,9 @@
                                             $profile->phone_num
                                         </td>
                                         <td>
-                                            <a href='/Favorite/insert/$result->item_id' class='btn btn-danger' style='width:100%;''>Favorite</a>
+                                            <center>
+                                                <a href='/Favorite/insert/$result->item_id' class='btn btn-danger' style='width:50%; font-size: 120%''>❤️</a>
+                                            </center>
                                         </td>
                                     </tr>";
                                 }

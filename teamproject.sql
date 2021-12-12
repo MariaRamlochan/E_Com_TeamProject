@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2021 at 09:37 AM
+-- Generation Time: Dec 12, 2021 at 08:11 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -47,7 +47,8 @@ CREATE TABLE `address` (
 
 INSERT INTO `address` (`address_id`, `profile_id`, `street_num`, `street_name`, `postal_code`, `city`, `province`, `country`) VALUES
 (1, 1, 1122, 'adsfdfdg', 'sfsfs', 'sdsadad', 'adada', 'adadad'),
-(2, 2, 1122, 'adsfdfdg', 'sfsfs', 'sdsadad', 'adada', 'adadad');
+(2, 2, 1234, 'Ave Papineau', 'H4H2S9', 'Montreal', 'Quebec', 'Canada'),
+(3, 3, 1122, 'adsfdfdg', 'sfsfs', 'sdsadad', 'adada', 'adadad');
 
 -- --------------------------------------------------------
 
@@ -112,7 +113,8 @@ CREATE TABLE `message` (
   `receiver` int(11) NOT NULL,
   `message` text NOT NULL,
   `read_status` enum('unread','read','reread') NOT NULL DEFAULT 'unread',
-  `private_status` enum('public','private') NOT NULL DEFAULT 'public'
+  `private_status` enum('public','private') NOT NULL DEFAULT 'public',
+  `time_sent` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -136,8 +138,9 @@ CREATE TABLE `profile` (
 --
 
 INSERT INTO `profile` (`profile_id`, `user_id`, `profile_name`, `email`, `phone_num`, `profile_pic`) VALUES
-(1, 1, 'Princess', 'mariaramlochan@hotmail.com', '2147483647', '/uploads/61afb208525e5.jpg'),
-(2, 2, 'Bear', 'bear@gmail.com', '2147483647', '/uploads/61b03e1ad9ad6.jpg');
+(1, 1, 'Princess', 'mariaramlochan@hotmail.com', '5146600819', '/uploads/61b4f3b9de142.jpg'),
+(2, 2, 'Bear', 'bear@gmail.com', '2147483647', '/uploads/61b4f40f96ef0.jpg'),
+(3, 3, 'Dovey', 'dove@gmail.com', '5149998888', '/uploads/61b4f6232b71f.jpg');
 
 -- --------------------------------------------------------
 
@@ -159,8 +162,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `username`, `password_hash`, `secret_key`, `last_login_timestamp`) VALUES
-(1, 'bunny', '$2y$10$RWvyAdk1X3Hzn08J6VIspe5uP8xgF4jcPLdszpS83YhjTGcy6nAs6', '', '2021-12-08 13:25:22'),
-(2, 'bear', '$2y$10$9w5kS2uMWKqzvRkAH4SYLeIL3ZufOc3/ONQZyDHuycIq.rHnWuoZm', '', '2021-12-08 12:16:37');
+(1, 'bunny', '$2y$10$RWvyAdk1X3Hzn08J6VIspe5uP8xgF4jcPLdszpS83YhjTGcy6nAs6', '', '2021-12-11 23:48:41'),
+(2, 'bear', '$2y$10$9w5kS2uMWKqzvRkAH4SYLeIL3ZufOc3/ONQZyDHuycIq.rHnWuoZm', '', '2021-12-12 09:55:05'),
+(3, 'dove', '$2y$10$JCRVBRgQsJGXYx6C6bXhZOkaxiEJa4tG6ziNkmJoiVqry2QAlz9ne', '', '2021-12-12 10:02:01');
 
 --
 -- Indexes for dumped tables
@@ -219,7 +223,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `address`
 --
 ALTER TABLE `address`
-  MODIFY `address_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `address_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `favorite`
@@ -243,13 +247,13 @@ ALTER TABLE `message`
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

@@ -53,10 +53,8 @@
 <!-- Top Bar -->
     <div class="p-4 topBar">
         <ul id="right-side">
-            <a href="">username
-                <img src="https://i.imgur.com/HMF0ega.jpeg" id="profilepic">
-            <!-- <img src="<?php echo $user['profile_pic'];?>" id="profilepic"> -->
-            <!-- <?php echo $user['user_name'];?> -->
+            <a href="">About Us
+                <img src="/images/bunny.gif" id="profilepic">
             </a>
         </ul>
     </div>
@@ -67,18 +65,12 @@
     <div class="blue-box">
 
         <!-- Title and Search Bar -->
-        <div class="container"> 
-            <div class="row">
-                <form action="/Item/search" method="POST">
-                    <div class="col-12 d-flex flex-row" style="margin-top: 2%;">
-                        <h1 style="color:white; width: 80%; font-size: 400%">Inbox</h1>
-                        <input type="search" class="form-control rounded" placeholder="Search" style="" />
-                        <span class="input-group-text border-0" id="search-addon">
-                            <i><img src="/images/search-icon.png"></i>
-                        </span>
+        <div class="container" style="margin-left: 10%"> 
+            <form action="/Item/search" method="POST">
+                    <div style='display:inline-block; margin-top: 4%'><h1 style="display:inline;color:white; width: 50%; font-size: 400%">Inbox</h1></div>
+                    <div style='display:inline-block; margin-left: 33%'><input type="search" class="form-control rounded" placeholder="Search" style="width: 150%; margin-left: 145%" />
                     </div>
-                </form>
-            </div>
+            </form>
         </div>
 
 
