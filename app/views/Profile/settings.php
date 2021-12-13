@@ -88,9 +88,9 @@
                     <br><hr>
                     <a class="btn btn-lg btn-danger" href="/Main/setup2fa" 
                             style="width: 80%; border-radius: 15px; height: 12%">Setup 2FA</a>
-                    <br><hr>
+<!--                     <br><hr>
                     <a class="btn btn-lg btn-danger" href="/User/delete/<?=$_SESSION['address_id']?>" 
-                            style="width: 80%; border-radius: 15px; height: 12%">Delete Account</a>
+                            style="width: 80%; border-radius: 15px; height: 12%">Delete Account</a> -->
 
                     <br><hr>
                     <!-- modal button trigger -->

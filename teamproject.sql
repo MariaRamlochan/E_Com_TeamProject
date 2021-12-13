@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 13, 2021 at 11:21 AM
+-- Generation Time: Dec 13, 2021 at 05:46 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -96,8 +96,8 @@ CREATE TABLE `item` (
 INSERT INTO `item` (`item_id`, `profile_id`, `item_name`, `item_pic`, `item_desc`, `item_price`, `posted_date`, `visits`, `status`) VALUES
 (1, 1, 'Actual Crepes', '/uploads/61b0161036be9.jpg', 'yummy', 2.99, '2021-12-07', 0, 'unavailable'),
 (2, 1, 'macaroons', '/uploads/61b016347e170.jpg', 'yay', 3.24, '2021-12-07', 0, 'unavailable'),
-(3, 1, 'cake', '/uploads/61b0164713dc1.jpg', 'wert', 34, '2021-12-07', 0, 'available'),
-(4, 1, 'Jam scones', '/uploads/61b0165f8d879.png', 'wow', 3.2, '2021-12-07', 0, 'available'),
+(3, 1, 'New Car', '/uploads/61b77792e0674.jpg', 'Red Car. Barely used. Winter and Summer tires included', 1500, '2021-12-07', 0, 'available'),
+(4, 1, 'Red Couch', '/uploads/61b7784b1fee0.jpg', 'Big Soft Couch', 67.99, '2021-12-07', 0, 'available'),
 (5, 1, 'banana crepes', '/uploads/61b0168483479.jpg', 'not a scam', 300, '2021-12-07', 0, 'unavailable');
 
 -- --------------------------------------------------------
@@ -172,7 +172,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `username`, `password_hash`, `secret_key`, `last_login_timestamp`) VALUES
-(1, 'bunny', '$2y$10$RWvyAdk1X3Hzn08J6VIspe5uP8xgF4jcPLdszpS83YhjTGcy6nAs6', '', '2021-12-13 15:17:09'),
+(1, 'bunny', '$2y$10$RWvyAdk1X3Hzn08J6VIspe5uP8xgF4jcPLdszpS83YhjTGcy6nAs6', '', '2021-12-13 21:38:20'),
 (2, 'bear', '$2y$10$mcm7wtFme2Z7K4rqwiGgPenmfkHBXKF3kZsvc942qnN1iUDbnXHKu', '', '2021-12-13 15:13:11'),
 (3, 'dove', '$2y$10$JCRVBRgQsJGXYx6C6bXhZOkaxiEJa4tG6ziNkmJoiVqry2QAlz9ne', '', '2021-12-12 10:02:01');
 
