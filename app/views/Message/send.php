@@ -72,7 +72,7 @@
         </div>
 
         <!-- Item View -->
-        <div class="container" style="margin-top: 5%;">
+        <div class="container" style="margin-top: 5%">
             <div class="row overflow-auto" style="width: 90%; height: 50%; margin-left: 5%">
                 <div> 
 
@@ -80,41 +80,46 @@
                        <!--  <tr class="table-secondary">
                                 
                         </tr> -->
-                        
 
                         <tr>
+                            <td>
                             <h4>Inbox</h4>
                             <form action='' method='post'>
-                                message: <textarea type='text' name='message'></textarea><br>
+                                message: <textarea type='text' name='message'style="resize: none;"></textarea><br>
                                 <label for="">public</label>
                                 <input type="radio" name="private_status" value="public" checked>
                                 <label for="">private</label>
                                 <input type="radio" name="private_status" value="private">
                                 <input type='submit' name='action' value='Send' />
                             </form>
+                            </td>
+
+                            <td>
+                                <p>Messages received:</p>
+                                <?php 
+                                if(count($data['messagesReceived'])){
+                                    foreach($data['messagesReceived'] as $message){
+
+                                        echo "<li> [From: ".$data['user']->profile_name."] ".$message->message."</li>";
+                                        echo "<a href='/Message/delete/$message->message_id'>delete</a>";
+                                    }
+                                }
+                                ?>
+                                <br>
+                                <p>Messages sent:</p>
+                                <?php 
+                                if(count($data['messagesSent'])){
+                                    foreach($data['messagesSent'] as $message){
+                                        echo "<li> [Status: ".$message->read_status."] ".$message->message." </li>";
+                                    }
+                                }
+                                ?>
+                            </td>
+
+
                         </tr>
 
-                        <tr>    
-                            <p>Messages received:</p>
-                            <?php 
-                            if(count($data['messagesReceived'])){
-                                foreach($data['messagesReceived'] as $message){
-
-                                    echo "<li> [From: ".$data['user']->profile_name."] ".$message->message."</li>";
-                                    echo "<a href='/Message/delete/$message->message_id'>delete</a>";
-                                }
-                            }
-                            ?>
-                            <br>
-                            <p>Messages sent:</p>
-                            <?php 
-                            if(count($data['messagesSent'])){
-                                foreach($data['messagesSent'] as $message){
-                                    echo "<li> [Status: ".$message->read_status."] ".$message->message." </li>";
-                                }
-                            }
-                            ?>
-                        </tr>
+                        </div>
 
                     </table>
                 </div>
