@@ -25,18 +25,15 @@ class Main extends \app\core\Controller{
 	}
 
 	public function login(){
-		if(!isset($_SESSION['failedattempts']))
-			$_SESSION['failedattempts']=0;
 
 		if(isset($_POST['action'])){
 			$user = new \app\models\User();
 			$user = $user->get($_POST['username']);
 
-			if($_SESSION['failedattempts'] < 3 && $user!=false && password_verify($_POST['password'], $user->password_hash)){
+			if($user!=false && password_verify($_POST['password'], $user->password_hash)){
 				$_SESSION['user_id'] = $user->user_id;
 				$_SESSION['username'] = $user->username;
 				$_SESSION['last_login_timestamp'] = $user->last_login_timestamp;
-				$_SESSION['failedattempts']=0;
 				$user->updateLoginTimestamp();
 
 				$profile = new \app\models\Profile();
@@ -47,22 +44,24 @@ class Main extends \app\core\Controller{
         		$address = new \app\models\Address();
         		$address = $address->get($_SESSION['profile_id']);
         		$_SESSION['address_id'] = $address->address_id;
+
+        		$message = new \app\models\Message();
+	            $messages_count = count($message->getUnread($_SESSION['profile_id']));
+	            $_SESSION['messages_count'] = $messages_count;
+
 				if($user->secret_key != '')
 					$_SESSION['secret_key'] = $user->secret_key;
 				header('location:'.BASE.'Profile/index');
 			}else{
 				$this->view('Main/login','Wrong username and password combination!');
-				$_SESSION['failedattempts'] += 1;
 			}
 
-		}else //1 present a form to the user
+		}else
 			$this->view('Main/login');
 	}
 
 	public function logout(){
-		if($_SESSION['failedattempts'] <3){
-			session_destroy();
-		}
+		session_destroy();
 		header('location:/Main/login');
 	}
 	
@@ -100,7 +99,7 @@ class Main extends \app\core\Controller{
 	        $currentcode = $_POST['currentCode'];
 	        if(\app\core\TokenAuth6238::verify($_SESSION['secret_key'],$currentcode)){
 	        	unset($_SESSION['secret_key']);
-	            header('location:'.BASE.'Main/index');
+	            header('location:'.BASE.'Profile/index');
 	        }else{
 	        	session_destroy();
 	            header('location:'.BASE.'Main/login');

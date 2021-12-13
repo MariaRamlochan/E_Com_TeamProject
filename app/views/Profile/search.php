@@ -33,7 +33,7 @@
         <hr class="admin-hr">
         <a href="/Favorite/index">Favorites</a>
         <hr class="admin-hr">
-        <a href="/Message/index">Messages</a>
+        <a href="/Message/index">Messages(<?php echo $_SESSION['messages_count'] ?>)</a>
         <hr class="admin-hr">
         <a href="/Item/discard">Past Post</a>
         <hr class="admin-hr">

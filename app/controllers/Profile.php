@@ -122,12 +122,6 @@ class Profile extends \app\core\Controller{
             $this->view('Profile/edit', ['profile'=>$profile]);
     }
 
-	public function details($profile_id){
-
-        $profile = new \app\models\Profile;
-		$profile = $profile->get($profile_id);
-		$this->view('/Profile/details',$profile);
-	}
 
     public function delete($user_id){
 
@@ -155,10 +149,11 @@ class Profile extends \app\core\Controller{
 		$result = $myProfile->get($user_id);
         
             if($result){
-                $picture = new \app\models\Picture();
-                $pictures = $picture->getAll($profile_id);
+                $message = new \app\models\Message();
+                $messages = $message->getPublic($profileID);
+                $messages_count = count($message->getUnreadPrivate($result->profile_id));
 
-                $this->view('/Profile/view',['user'=>$result,'pictures'=>$pictures]);
+                $this->view('/Profile/view',['user'=>$result,'messages_count'=>$messages_count,'messages'=>$messages]);
             }
             else{
                 header('location:/Profile/index');
@@ -168,4 +163,5 @@ class Profile extends \app\core\Controller{
             header('location:/Profile/index');
         }
 	}
+
 }

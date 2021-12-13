@@ -9,7 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     
-    <title>Inbox</title>
+    <title>Send Message</title>
 </head>
 
 <body id='container'>
@@ -67,26 +67,24 @@
         <!-- Title and Search Bar -->
         <div class="container" style="margin-left: 10%"> 
             <form action="/Item/search" method="POST">
-                    <div style='display:inline-block; margin-top: 4%'><h1 style="display:inline;color:white; width: 50%; font-size: 400%">Inbox</h1></div>
-                    <div style='display:inline-block; margin-left: 33%'><input type="search" class="form-control rounded" placeholder="Search" style="width: 150%; margin-left: 145%" />
-                    </div>
+                    <div style='display:inline-block; margin-top: 4%'><h1 style="display:inline;color:white; width: 50%; font-size: 400%">Send Message to </h1></div>
             </form>
         </div>
-
 
         <!-- Item View -->
         <div class="container" style="margin-top: 5%;">
             <div class="row overflow-auto" style="width: 90%; height: 50%; margin-left: 5%">
-                <div>
+                <div> 
+
                     <table class="table table-light table-hover" style="table-layout: fixed;">
                        <!--  <tr class="table-secondary">
                                 
                         </tr> -->
                         
 
-                        <!-- <tr>
+                        <tr>
                             <h4>Inbox</h4>
-                            <form action='/message/send/<?php echo $data['user']->profile_id; ?>' method='post'>
+                            <form action='' method='post'>
                                 message: <textarea type='text' name='message'></textarea><br>
                                 <label for="">public</label>
                                 <input type="radio" name="private_status" value="public" checked>
@@ -94,26 +92,30 @@
                                 <input type="radio" name="private_status" value="private">
                                 <input type='submit' name='action' value='Send' />
                             </form>
-                        </tr> -->
+                        </tr>
 
-
-                        <tr>
+                        <tr>    
+                            <p>Messages received:</p>
                             <?php 
-                            foreach($data['users'] as $users) {
-                            echo " <tr> 
-                                        <td >
-                                            <img src='$users->profile_pic' style='width:150px; height: 120px;'>
-                                        </td>
-                                        <td >$users->profile_name</td>
-                                        <td style='word-wrap:break-word'>$users->email</td>
-                                        <td >$users->phone_num</td>
-                                        <td >
-                                            <a href='/Message/send/$users->profile_id' class='btn btn-primary' style='width:100%;'>Message</a>
-                                        </td>
-                                    </tr>";
+                            if(count($data['messagesReceived'])){
+                                foreach($data['messagesReceived'] as $message){
+
+                                    echo "<li> [From: ".$data['user']->profile_name."] ".$message->message."</li>";
+                                    echo "<a href='/Message/delete/$message->message_id'>delete</a>";
                                 }
+                            }
+                            ?>
+                            <br>
+                            <p>Messages sent:</p>
+                            <?php 
+                            if(count($data['messagesSent'])){
+                                foreach($data['messagesSent'] as $message){
+                                    echo "<li> [Status: ".$message->read_status."] ".$message->message." </li>";
+                                }
+                            }
                             ?>
                         </tr>
+
                     </table>
                 </div>
             </div>

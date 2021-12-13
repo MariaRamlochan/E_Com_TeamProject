@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2021 at 08:11 AM
+-- Generation Time: Dec 13, 2021 at 11:21 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -117,6 +117,16 @@ CREATE TABLE `message` (
   `time_sent` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `message`
+--
+
+INSERT INTO `message` (`message_id`, `sender`, `receiver`, `message`, `read_status`, `private_status`, `time_sent`) VALUES
+(1, 1, 2, 'hello', 'unread', 'public', '2021-12-13 03:14:49'),
+(2, 1, 2, 'I am tired', 'unread', 'public', '2021-12-13 03:17:38'),
+(3, 2, 1, 'How are you?', 'unread', 'public', '2021-12-13 05:05:18'),
+(4, 1, 2, 'I can\'t take it anymore T^T', 'reread', 'private', '2021-12-13 05:09:37');
+
 -- --------------------------------------------------------
 
 --
@@ -162,8 +172,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `username`, `password_hash`, `secret_key`, `last_login_timestamp`) VALUES
-(1, 'bunny', '$2y$10$RWvyAdk1X3Hzn08J6VIspe5uP8xgF4jcPLdszpS83YhjTGcy6nAs6', '', '2021-12-11 23:48:41'),
-(2, 'bear', '$2y$10$9w5kS2uMWKqzvRkAH4SYLeIL3ZufOc3/ONQZyDHuycIq.rHnWuoZm', '', '2021-12-12 09:55:05'),
+(1, 'bunny', '$2y$10$RWvyAdk1X3Hzn08J6VIspe5uP8xgF4jcPLdszpS83YhjTGcy6nAs6', '', '2021-12-13 15:17:09'),
+(2, 'bear', '$2y$10$mcm7wtFme2Z7K4rqwiGgPenmfkHBXKF3kZsvc942qnN1iUDbnXHKu', '', '2021-12-13 15:13:11'),
 (3, 'dove', '$2y$10$JCRVBRgQsJGXYx6C6bXhZOkaxiEJa4tG6ziNkmJoiVqry2QAlz9ne', '', '2021-12-12 10:02:01');
 
 --
@@ -241,7 +251,7 @@ ALTER TABLE `item`
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `profile`
