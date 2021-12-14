@@ -1,4 +1,8 @@
 # E_Com_TeamProject
+Project made by: Nafees Syed & Maria Cristina Ramlochan
+
+
+
 The project turns around our kijiji knockoff application. It is a secons hand website where people can post their unwantd items and interested buyers will be able to contact 
 the seller to make the transaction.
 
