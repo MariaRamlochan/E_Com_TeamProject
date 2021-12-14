@@ -6,3 +6,11 @@ The most interesting user stories that we had to make was the Modal. The modal s
 way to display informations.
 
 the hardest user story that we had to do was the messaging system.
+
+Instruction to import and install: DB name, folder, etc.
+  First, open the xampp controller
+  Select ADMIN button on the MySQL line
+  locate the import button on the top bar in the "phpMyAdmin"
+  after selecting the button, select the "choose file" button
+  inside of the Htdoc, select the "teamproject.sql" file and click on go
+  
