@@ -116,7 +116,7 @@
                                         </td>
                                         <td>
                                             <center>
-                                                <a href='/Favorite/delete/$favorite->favorite_id' class='btn btn-danger' style='width:70%;''>Unfavorite 💔</a>
+                                                <a href='/Favorite/delete/$favorite->favorite_id' class='btn btn-danger' style='width:100%;''>Unfavorite 💔</a>
                                             </center>
                                         </td>
                                     </tr>";
