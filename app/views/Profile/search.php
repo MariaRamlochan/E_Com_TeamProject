@@ -18,11 +18,13 @@
 <div class="sidenav">
     <center>
 
-    <img src="/images/bunny.gif" class='img-thumbnail img-fluid' alt="Responsive image" id='logo' alt="">
+
+
+    <img src="<?=$_SESSION['profile_pic'] ?>" class='img-thumbnail img-fluid' alt="Responsive image" id='logo' alt="">
     <center>
 
     <h2 class="nav-title" style="color:white; margin-top: 30px">
-        Welcome <?=$data['user']->profile_name ?>!
+        Welcome <?=$_SESSION['profile_name'] ?>!
     </h2>
 
     <div class="admin-navbar-items">
@@ -35,13 +37,13 @@
         <hr class="admin-hr">
         <a href="/Message/index">Messages(<?php echo $_SESSION['messages_count'] ?>)</a>
         <hr class="admin-hr">
-        <a href="/Item/discard">Past Post</a>
+        <a href="/Item/past">Past Post</a>
         <hr class="admin-hr">
     </div>
     </center>
 
     <div class="text-center setting-logout-position-admin">
-        <a href="#">Settings</a>
+        <a href="/Profile/settings">Settings</a>
         <center>
             <br><br><br><br><br><hr>
         </center>
@@ -53,10 +55,8 @@
 <!-- Top Bar -->
     <div class="p-4 topBar">
         <ul id="right-side">
-            <a href="">username
-                <img src="https://i.imgur.com/HMF0ega.jpeg" id="profilepic">
-            <!-- <img src="<?php echo $user['profile_pic'];?>" id="profilepic"> -->
-            <!-- <?php echo $user['user_name'];?> -->
+            <a href="">About Us
+                <img src="/images/bunny.gif" id="profilepic">
             </a>
         </ul>
     </div>
@@ -67,19 +67,21 @@
     <div class="blue-box">
 
         <!-- Title and Search Bar -->
-        <div class="container" style="margin-left: 1%"> 
+        <div class="container" style="margin-left: 10%"> 
             <form action="/Item/search" method="POST">
-                    <div style='display:inline-block;'><h1 style="display:inline;color:white; width: 50%; font-size: 400%">Items for Sale</h1></div>
-                    <div style='display:inline-block;'><input type="search" class="form-control rounded" placeholder="Search" style="width: 150%; margin-left: 200%" /></div>
+                <div style='display:inline-block; margin-top: 4%'><h1 style="display:inline;color:white; width: 50%; font-size: 400%">Items for Sale</h1></div>
+                    <div style='display:inline-block; margin-left: 33%'><input type="search" name="item_name"class="form-control rounded" placeholder="Search" style="width: 150%; margin-left: 145%" />
+                </div>
             </form>
         </div>
 
 
     <!-- Item View -->
     <div style='display:inline-block; height: 55%'>
-        <div class="container" style="height: 40%; margin-left: 1%">
-            <section class="p-3" style="width: 85%;">
-                <div class="table-wrapper-scroll-y my-custom-scrollbar">
+        <div class="container insideColor" style="margin-left: 19%; 
+                margin-top: 5%; width: 400%; height: 145%">
+            <section class="p-3" style="width: 100%;margin-top: 1.5%;">
+                <div class="table-wrapper-scroll-y my-custom-scrollbarSell">
                     <table class="table table-bordered table-striped table-dark"> 
                         <thead>
                             <tr>
@@ -88,19 +90,34 @@
                               <th scope="col">Description</th>
                               <th scope="col">Price</th>
                               <th scope="col">Post Date</th>
+                              <th scope="col">Sell Info</th>
+                              <th scope="col">Favorite</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php 
                             foreach($data as $result) {
+
+                            $profile = new \app\models\Profile();
+                            $profile = $profile->getSpecificUser($result->profile_id);
                             echo " <tr> 
                                         <td >
                                             <img src='$result->item_pic' style='width:150px; height: 120px;'>
                                         </td>
-                                        <td >$result->profile_name</td>
-                                        <td style='word-wrap:break-word'>$items->item_desc</td>
-                                        <td >$items->item_price</td>
-                                        <td >$items->posted_date</td>
+                                        <td >$result->item_name</td>
+                                        <td style='word-wrap:break-word'>$result->item_desc</td>
+                                        <td >$result->item_price$</td>
+                                        <td >$result->posted_date</td>
+                                        <td >
+                                            $profile->profile_name<br><br>
+                                            $profile->email<br>
+                                            $profile->phone_num
+                                        </td>
+                                        <td>
+                                            <center>
+                                                <a href='/Favorite/insert/$result->item_id' class='btn btn-danger' style='width:50%; font-size: 120%''>❤️</a>
+                                            </center>
+                                        </td>
                                     </tr>";
                                 }
                             ?>
@@ -109,49 +126,8 @@
                  </div>
             </section>
         </div>
-    </div>
-
-        <!-- Filter -->
-        <div style='display:inline-block; margin-left: 5%'>
-            <div class="container" style="width: 150%">
-                <fieldset class="p-3" style="width: 13%; margin-right: 0.2%">
-                <!-- modal button trigger -->
-                <button type="button" class="btn btn-success btn-rounded" data-toggle="modal" 
-                        data-target="#modalCenter">Add new item</button>
-                <!-- modal button trigger -->
-                <br>
-                <label for="orderRadio" style="color:white; font-weight: bold; font-size: 150%">Order By</label><hr>
-                <input type="radio" id="orderRadio" value="Item Name"> 
-                <p style="display: inline; color: white">Item name</p><br><br>
-                <label style="color:white; font-weight: bold; font-size: 150%">Sort By</label><hr>
-
-            <label for="itemType" style="color: white">Item Type:</label></br>
-                <select name="itemType" id="itemType">
-                    <option value="none">None</option>
-                    <option value="pencilCase">Pencil case</option>
-                    <option value="sticker">Sticker</option>
-                    <option value="planner">Planner</option>
-                    <option value="calendar">Calendar</option>
-                    <option value="bookmark">Book Mark</option>
-                    <option value="cards">Cards</option>
-                </select></br>
-
-            <label for="itemTheme" style="color: white">Item Theme:</label></br>
-                <select name="itemTheme" id="itemTheme">
-                    <option value="None">None</option>
-                    <option value="winter">Winter</option>
-                    <option value="spring">Spring</option>
-                    <option value="summer">Summer</option>
-                    <option value="fall">Fall</option>
-                    <option value="xmas">Christmas</option>
-                    <option value="halloween">Halloween</option>
-                </select>
-    </fieldset>
-    </div>
-    </div>
-    <!-- filter -->
-        
-    </div>
+    </div> 
+</div>
 <!-- Content Here -->
 </body>
 </html>

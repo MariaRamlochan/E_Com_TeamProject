@@ -71,4 +71,12 @@ class Item extends \app\core\Model{
 		$STMT->execute(['item_name'=>$this->item_name,'item_pic'=>$this->item_pic, 'item_desc'=>$this->item_desc, 'item_price'=>$this->item_price, 'visits'=>$this->visits, 'status'=>$this->status, 'item_id'=>$this->item_id]);
 	}
 
+	public function search($search_term) {
+        $SQL = "SELECT * FROM item WHERE item_name LIKE :search_term AND status = 'available'";
+        $STMT = self::$_connection->prepare($SQL);
+        $STMT->execute(array(':search_term' => '%' . $search_term . '%'));
+        $STMT->setFetchMode(\PDO::FETCH_CLASS,'app\\models\\Item');
+        return $STMT->fetchAll();
+    }
+
 }

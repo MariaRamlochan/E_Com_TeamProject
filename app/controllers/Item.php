@@ -92,7 +92,6 @@ class Item extends \app\core\Controller{
                     $item->item_pic = "/".$this->folder.$filename;
                     $item->item_id = $item_id;
 					$item->update();
-					//redirect the user back to the index
 					header("location:/Item/index");
                 } else{
                     echo "There was an error";
@@ -108,7 +107,7 @@ class Item extends \app\core\Controller{
                     header("location:/Item/index");
             }
 
-        }else //1 present a form to the user
+        }else
             $this->view('Item/edit', ['item'=>$item]);
     }
 
@@ -127,16 +126,10 @@ class Item extends \app\core\Controller{
         $this->view('Item/discard',['item'=>$result]);
     }
 
-
- //    public function search(){
-
- //        if(isset($_POST['action'])){
-			
- //            $profile = new \app\models\Profile;
- //            $profiles = $profile->search($_POST['user_name']);
- //            $this->view('/Profile/search',['users'=>$profiles]);
-	// 	}else
-	// 		$this->view('/Profile/search',['users'=>[]]);
-	// }
+        public function search(){
+        $item = new \app\models\Item();
+        $result = $item->search($_POST['item_name']);
+        $this->view('/Profile/search', $result);
+    }
 
 }

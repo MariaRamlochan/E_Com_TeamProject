@@ -69,9 +69,9 @@
         <!-- Title and Search Bar -->
         <div class="container" style="margin-left: 10%"> 
             <form action="/Item/search" method="POST">
-                    <div style='display:inline-block; margin-top: 4%'><h1 style="display:inline;color:white; width: 50%; font-size: 400%">Items for Sale</h1></div>
-                    <div style='display:inline-block; margin-left: 33%'><input type="search" class="form-control rounded" placeholder="Search" style="width: 150%; margin-left: 145%" />
-                    </div>
+                <div style='display:inline-block; margin-top: 4%'><h1 style="display:inline;color:white; width: 50%; font-size: 400%">Items for Sale</h1></div>
+                    <div style='display:inline-block; margin-left: 33%'><input type="search" name="item_name"class="form-control rounded" placeholder="Search" style="width: 150%; margin-left: 145%" />
+                </div>
             </form>
         </div>
 
@@ -115,7 +115,7 @@
                                         </td>
                                         <td>
                                             <center>
-                                                <a href='/Favorite/insert/$result->item_id' class='btn btn-danger' style='width:50%; font-size: 120%''>❤️</a>
+                                                <a href='/Favorite/insert/$result->item_id' class='btn btn-danger' style='width:100%; font-size: 120%''>❤️</a>
                                             </center>
                                         </td>
                                     </tr>";
